@@ -1,0 +1,235 @@
+{
+    "users": [
+        {
+            "name": "Elif",
+            "username": "elifcmbl",
+            "urlAvatar": "https://i.pinimg.com/564x/49/3e/b0/493eb0d9e13229815c4d0a33bb9fb552.jpg",
+            "event": "Elif has joined MSV event"
+        },
+        {
+            "name": "Beyza",
+            "username": "beyzaahsen",
+            "urlAvatar": "https://i.pinimg.com/564x/fc/ed/81/fced812994a6bd165e6828232a4f3e1b.jpg",
+            "event": "Beyza is planning to go to concert"
+        },
+        {
+            "name": "Atakan",
+            "username": "atknshn",
+            "urlAvatar": "https://i.pinimg.com/564x/91/3c/4a/913c4a1a9b53084ca08849157c2e46b8.jpg",
+            "event": "Party"
+        },
+        {
+            "name": "Gökmen",
+            "username": "gergedanoglu",
+            "urlAvatar": "https://i.pinimg.com/564x/48/9e/66/489e66caed44245cbd24213ec27eb50c.jpg",
+            "event": "Concert"
+        },
+        {
+            "name": "Metin",
+            "username": "mtnbsy",
+            "urlAvatar": "https://i.pinimg.com/564x/4a/82/1b/4a821bf117b67caea29aa2202f18c415.jpg",
+            "event": "Dinner with friends"
+        },
+        {
+            "name": "İzge",
+            "username": "izgkzgn",
+            "urlAvatar": "https://i.pinimg.com/564x/cb/46/5b/cb465b12f8a0e00b17eb661868402434.jpg",
+            "event": "Coffee"
+        },
+        {
+            "name": "Asya",
+            "username": "egincc",
+            "urlAvatar": "https://i.pinimg.com/564x/56/40/d4/5640d401866359ccd6cfbdfc98a712dd.jpg",
+            "event": "Birthday party!"
+        },
+        {
+            "name": "Ezgi",
+            "username": "ezgivardarr",
+            "urlAvatar": "https://i.pinimg.com/564x/0a/e0/f9/0ae0f964d7b50d12834c3aa1f52e5b57.jpg",
+            "event": "Tracking"
+        },
+        {
+            "name": "Büşra",
+            "username": "aysebusra",
+            "urlAvatar": "https://i.pinimg.com/564x/60/0c/f3/600cf3ed1792854213a3ea7a654a6a8d.jpg",
+            "event": "Running"
+        },
+        {
+            "name": "Yakup",
+            "username": "ykpcmbl",
+            "urlAvatar": "https://i.pinimg.com/564x/66/b0/9b/66b09b900e32bb7ba326db880d26d97f.jpg",
+            "event": "Workshop"
+        },
+        {
+            "name": "Sarper",
+            "username": "ssglfrt",
+            "urlAvatar": "https://i.pinimg.com/564x/97/7e/4d/977e4daa3554253a5270cdc6be56dc5b.jpg",
+            "event": "Playing football"
+        },
+        {
+            "name": "Cansu",
+            "username": "cnscns",
+            "urlAvatar": "https://i.pinimg.com/564x/13/e0/f8/13e0f8c081dedcbd4f85f7b30ed280cd.jpg",
+            "event": "Watching F1"
+        },
+        {
+            "name": "İrem",
+            "username": "irmslu",
+            "urlAvatar": "https://i.pinimg.com/564x/28/13/bc/2813bc5b32c8e9c1403f79a03fd29d20.jpg",
+            "event": "Breakfast"
+        },
+        {
+            "name": "Elif",
+            "username": "eloyeto",
+            "urlAvatar": "https://i.pinimg.com/564x/19/a5/25/19a5258fe0d742fdc9ed064b916dc518.jpg",
+            "event": "Nail art party"
+        },
+        {
+            "name": "Buket",
+            "username": "bktglgn",
+            "urlAvatar": "https://i.pinimg.com/564x/10/1f/20/101f2003e98894fbc574a3f42e9dc161.jpg",
+            "event": "Working"
+        },
+        {
+            "name": "Numan",
+            "username": "nmnkrbyk",
+            "urlAvatar": "https://i.pinimg.com/564x/52/06/1f/52061f2cd36f51592297a7e252caa77a.jpg",
+            "event": "House Party"
+        }
+    ],
+
+    "favorites" : [
+        {
+            "name": "Numan",
+            "urlAvatar": "https://i.pinimg.com/564x/52/06/1f/52061f2cd36f51592297a7e252caa77a.jpg"
+        },
+        {
+            "name": "Asya",
+            "urlAvatar": "https://i.pinimg.com/564x/56/40/d4/5640d401866359ccd6cfbdfc98a712dd.jpg"
+        },
+        {
+            "name": "Beyza",
+            "urlAvatar": "https://i.pinimg.com/564x/fc/ed/81/fced812994a6bd165e6828232a4f3e1b.jpg"
+        },
+        {
+            "name": "Yakup",
+            "urlAvatar": "https://i.pinimg.com/564x/66/b0/9b/66b09b900e32bb7ba326db880d26d97f.jpg"
+        },
+        {
+            "name": "Cansu",
+            "urlAvatar": "https://i.pinimg.com/564x/13/e0/f8/13e0f8c081dedcbd4f85f7b30ed280cd.jpg"
+        },
+        {
+          "name": "İzge",
+          "urlAvatar": "https://i.pinimg.com/564x/cb/46/5b/cb465b12f8a0e00b17eb661868402434.jpg"
+        }
+
+    
+    ],
+
+
+    "chats": [
+        {
+          "urlAvatar": "https://i.pinimg.com/564x/fc/ed/81/fced812994a6bd165e6828232a4f3e1b.jpg",
+          "sender": "Beyza",
+          "time": "10:00 AM",
+          "text": "Hey, how's it going? What did you do today?",
+          "isLiked": "false",
+          "unread": "false"
+        },
+        {
+          "urlAvatar": "https://i.pinimg.com/564x/56/40/d4/5640d401866359ccd6cfbdfc98a712dd.jpg",
+          "sender": "Asya",
+          "time": "1d",
+          "text": "Hey, how's it going? What did you do today?",
+          "isLiked": "false",
+          "unread": "true"
+        },
+        {
+          "urlAvatar": "https://i.pinimg.com/564x/66/b0/9b/66b09b900e32bb7ba326db880d26d97f.jpg",
+          "sender": "Yakup",
+          "time": "1:30 PM",
+          "text": "Hey, how's it going? What did you do today?",
+          "isLiked": "false",
+          "unread": "true"
+        },
+        {
+          "urlAvatar": "https://i.pinimg.com/564x/cb/46/5b/cb465b12f8a0e00b17eb661868402434.jpg",
+          "sender": "İzge",
+          "time": "5:30 PM",
+          "text": "Hey, how's it going? What did you do today?",
+          "isLiked": "false",
+          "unread": "true"
+        },
+        {
+          "urlAvatar": "https://i.pinimg.com/564x/52/06/1f/52061f2cd36f51592297a7e252caa77a.jpg",
+          "sender": "Numan",
+          "time": "3w",
+          "text": "Hey, how's it going? What did you do today?",
+          "isLiked": "false",
+          "unread": "true"
+        },
+        {
+          "urlAvatar": "https://i.pinimg.com/564x/60/0c/f3/600cf3ed1792854213a3ea7a654a6a8d.jpg",
+          "sender": "Büşra",
+          "time": "2d",
+          "text": "Hey, how's it going? What did you do today?",
+          "isLiked": "false",
+          "unread": "true"
+        },
+        {
+          "urlAvatar": "https://i.pinimg.com/564x/13/e0/f8/13e0f8c081dedcbd4f85f7b30ed280cd.jpg",
+          "sender": "Cansu",
+          "time": "11:57 AM",
+          "text": "Hey, how's it going? What did you do today?",
+          "isLiked": "false",
+          "unread": "true"
+        }
+      ],
+      
+    
+      "messages" : [
+        {
+          "sender": "james",
+          "time": "5:30 PM",
+          "text": "Hey, how's it going? What did you do today?",
+          "isLiked": "true",
+          "unread": "true"
+        },
+        {
+          "sender": "currentUser",
+          "time": "4:30 PM",
+          "text": "Just walked my doge. She was super duper cute. The best pupper!!",
+          "isLiked": "false",
+          "unread": "true"
+        },
+        {
+          "sender": "james",
+          "time": "3:45 PM",
+          "text": "How's the doggo?",
+          "isLiked": "false",
+          "unread": "true"
+        },
+        {
+          "sender": "james",
+          "time": "3:15 PM",
+          "text": "All the food",
+          "isLiked": "true",
+          "unread": "true"
+        },
+        {
+          "sender": "currentUser",
+          "time": "2:30 PM",
+          "text": "Nice! What kind of food did you eat?",
+          "isLiked": "false",
+          "unread": "true"
+        },
+        {
+          "sender": "james",
+          "time": "2:00 PM",
+          "text": "I ate so much food today.",
+          "isLiked": "false",
+          "unread": "true"
+        }
+      ]
+}
