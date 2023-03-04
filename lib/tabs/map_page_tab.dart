@@ -75,20 +75,24 @@ class _MapPageTabState extends State<MapPageTab> {
         ),
       ),
       body: Stack(
-        children: [
-          Positioned.fill(
-            child: GoogleMap(
-                myLocationButtonEnabled: true,
-                compassEnabled: false,
-                tiltGesturesEnabled: false,
-                markers: _markers,
-                mapType: MapType.normal,
-                initialCameraPosition: initialCameraPosition,
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
-
-                  showPinsOnMap();
-                }),
+        children: [ 
+          Card(
+            margin: EdgeInsets.only(top:10.0, bottom: 400.0, right: 5.0, left: 5.0),
+            child: Positioned.fromRect(
+              rect: Rect.fromCenter(center: Offset(200, 200), width: 300, height: 300),
+              child: GoogleMap(
+                  myLocationButtonEnabled: true,
+                  compassEnabled: false,
+                  tiltGesturesEnabled: false,
+                  markers: _markers,
+                  mapType: MapType.normal,
+                  initialCameraPosition: initialCameraPosition,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+          
+                    showPinsOnMap();
+                  }),
+            ),
           ),
           Positioned(
             top: 10,
