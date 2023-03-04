@@ -51,7 +51,7 @@ class _ProfilePageTabState extends State<ProfilePageTab> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 12.0, bottom: 80.0),
+                    padding: const EdgeInsets.only(top: 12.0, bottom: 50.0),
                     child: Card(
                       clipBehavior: Clip.antiAlias,
                       shape: RoundedRectangleBorder(
@@ -66,11 +66,39 @@ class _ProfilePageTabState extends State<ProfilePageTab> {
                       ),
                     ),
                   ),
-                  
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0.0, bottom: 20.0),
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)),
+                      child: Container(
+                        margin: EdgeInsets.only(left: 50.0, right: 50.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 30.0, horizontal: 120.0),
+                        
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12.0, bottom: 80.0),
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)),
+                      child: Container(
+                        margin: EdgeInsets.only(left: 50.0, right: 50.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 100.0, horizontal: 120.0),
+                        
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
           ), //profile pic //Name-username
+          
         ],
       ),
     );
