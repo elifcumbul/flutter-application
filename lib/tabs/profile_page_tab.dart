@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 
 class ProfilePageTab extends StatefulWidget {
   const ProfilePageTab({super.key});
@@ -8,6 +11,22 @@ class ProfilePageTab extends StatefulWidget {
 }
 
 class _ProfilePageTabState extends State<ProfilePageTab> {
+  List _favorites = [];
+
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('assets/users.json');
+    final data = await json.decode(response);
+    setState(() {
+      _favorites = data["favorites"];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    readJson();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +35,14 @@ class _ProfilePageTabState extends State<ProfilePageTab> {
           'Profile',
           style: TextStyle(fontSize: 35),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.settings),
+            iconSize: 30.0,
+            padding: const EdgeInsets.all(25.0),
+          ),
+        ],
       ),
       body: ListView(
         children: [
@@ -72,11 +99,38 @@ class _ProfilePageTabState extends State<ProfilePageTab> {
                       clipBehavior: Clip.antiAlias,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16)),
+                      // child: Container(
+                      //   margin: EdgeInsets.only(left: 50.0, right: 50.0),
+                      //   padding: const EdgeInsets.symmetric(
+                      //       vertical: 30.0, horizontal: 120.0),
+
+                      // ),
                       child: Container(
                         margin: EdgeInsets.only(left: 50.0, right: 50.0),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 30.0, horizontal: 120.0),
-                        
+                             vertical: 30.0, horizontal: 120.0),
+                        //height: 120.0,
+                        child: ListView.builder(
+                          padding: const EdgeInsets.only(left: 5.0),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: _favorites.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: <Widget>[
+                                  CircleAvatar(
+                                    radius: 15.0,
+                                    backgroundImage: NetworkImage(
+                                        _favorites[index]["urlAvatar"]),
+                                  ),
+                                  const SizedBox(height: 6.0),
+                                  
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -90,7 +144,6 @@ class _ProfilePageTabState extends State<ProfilePageTab> {
                         margin: EdgeInsets.only(left: 50.0, right: 50.0),
                         padding: const EdgeInsets.symmetric(
                             vertical: 100.0, horizontal: 120.0),
-                        
                       ),
                     ),
                   ),
@@ -98,7 +151,6 @@ class _ProfilePageTabState extends State<ProfilePageTab> {
               ),
             ],
           ), //profile pic //Name-username
-          
         ],
       ),
     );
@@ -121,14 +173,12 @@ class ProfileInfoWidget extends StatelessWidget {
       children: [
         Text(
           name,
-          style: const TextStyle(
-             fontSize: 30),
+          style: const TextStyle(fontSize: 30),
           textAlign: TextAlign.center,
         ),
         Text(
           username,
-          style: const TextStyle(
-            fontSize: 15),
+          style: const TextStyle(fontSize: 15),
           textAlign: TextAlign.center,
         ),
       ],
