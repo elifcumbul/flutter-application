@@ -46,55 +46,187 @@ class _TimelineState extends State<Timeline> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Take Me Out', style: TextStyle(fontSize: 35)),
-      ),
-      body: ListView.builder(
-        itemCount: _users.length,
-        itemBuilder: (context, index) {
-          return Row(
-            children: <Widget>[
-              Expanded(
-                child: Card(
-                  margin: const EdgeInsets.only(
-                      left: 20.0, right: 20.0, top: 20.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          margin: const EdgeInsets.only(left: 5.0, top: 5.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: CircleAvatar(
-                            radius: 25,
-                            backgroundImage:
-                                NetworkImage(_users[index]["urlAvatar"]),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Text(
-                            _users[index]["username"],
-                            style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,),
-                          ),
-                        ),
-                        
-                      ],
-                    ),
+      // appBar: AppBar(
+      //   title: const Text('Take Me Out', style: TextStyle(fontSize: 30)),
+      // ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            //margin: const EdgeInsets.only(left: 40),
+            padding: const EdgeInsets.all(30),
+            height: size.height * 0.4,
+            decoration: const BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(154, 68, 44, 0),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
                   ),
-                ),
-              ),
-            ],
-          );
-        },
+                ],
+                borderRadius:
+                    BorderRadius.only(bottomLeft: Radius.circular(100)),
+                color: Color.fromARGB(255, 14, 17, 43)),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _users.length,
+              itemBuilder: (context, index) {
+                return Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(
+                          left: 10.0, right: 5.0, bottom: 20.0),
+                      padding: const EdgeInsets.all(7.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const <Widget>[
+                          // Padding(
+                          //   padding: const EdgeInsets.all(5.0),
+                          //   child: Container(
+                          //     height: size.height * 0.08,
+                          //     child: CircleAvatar(
+                          //       backgroundColor: Color.fromARGB(255, 14, 17, 43),
+                          //       radius: 30.0,
+                          //       child: CircleAvatar(
+                          //         backgroundImage:
+                          //           NetworkImage(_users[index]["urlAvatar"]),
+                          //           radius: 29.0,
+                          //       ),
+                                
+                          //     ),
+                          //   ),
+                          // ),
+                          // Padding(
+                          //   padding: const EdgeInsets.all(0.0),
+                          //   child: Text(
+                          //     _users[index]["username"],
+                          //     style: const TextStyle(
+                          //       fontSize: 12,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(60),
+                        decoration: const BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(154, 68, 44, 0),
+                                spreadRadius: 2,
+                                blurRadius: 2,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30),
+                                bottomLeft: Radius.circular(30)),
+                            color: Color.fromARGB(255, 255, 221, 175)),
+                        margin: const EdgeInsets.only(left: 20.0, bottom: 20.0),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
+//Card timeline part
+
+
+
+
+
+//renkli kısım
+
+// Container(
+//             margin: const EdgeInsets.only(top: 40, left: 10),
+//             padding: const EdgeInsets.all(30),
+//             height: size.height * 0.08,
+//             decoration: const BoxDecoration(
+//               boxShadow: [
+//                 BoxShadow(
+//                   color: Color.fromARGB(137, 189, 194, 255),
+//                   spreadRadius: 2,
+//                   blurRadius: 2,
+//                   offset: Offset(0, 3),
+//                 ),
+//               ],
+//               borderRadius: BorderRadius.only(
+//                 topLeft: Radius.circular(100),
+//                 bottomLeft: Radius.circular(100)
+//               ),
+//               color: Color.fromARGB(255, 63, 74, 165)
+//             ),
+//           ),
+//           Container(
+//             margin: const EdgeInsets.only(top: 35, right: 10),
+//             padding: const EdgeInsets.all(30),
+//             height: size.height * 0.08,
+//             decoration: const BoxDecoration(
+//               boxShadow: [
+//                 BoxShadow(
+//                   color: Color.fromARGB(137, 20, 82, 16),
+//                   spreadRadius: 2,
+//                   blurRadius: 5,
+//                   offset: Offset.zero,
+//                 ),
+//               ],
+//               borderRadius: BorderRadius.only(
+//                 topRight: Radius.circular(100),
+//                 bottomRight: Radius.circular(100)
+//               ),
+//               color: Color.fromARGB(255, 149, 215, 133)
+//             ),
+//           ),
+//           Container(
+//             margin: const EdgeInsets.only(top: 35, left: 10),
+//             padding: const EdgeInsets.all(30),
+//             height: size.height * 0.08,
+//             decoration: const BoxDecoration(
+//               boxShadow: [
+//                 BoxShadow(
+//                   color: Color.fromARGB(137, 63, 73, 165),
+//                   spreadRadius: 2,
+//                   blurRadius: 5,
+//                   offset: Offset(0, 3),
+//                 ),
+//               ],
+//               borderRadius: BorderRadius.only(
+//                 topLeft: Radius.circular(100),
+//                 bottomLeft: Radius.circular(100)
+//               ),
+//               color: Color.fromARGB(255, 189, 194, 255)
+//             ),
+//           ),
+//           Container(
+//             margin: const EdgeInsets.only(top: 35, right: 10),
+//             padding: const EdgeInsets.all(30),
+//             height: size.height * 0.08,
+//             decoration: const BoxDecoration(
+//               boxShadow: [
+//                 BoxShadow(
+//                   color: Color.fromARGB(137, 0, 31, 42),
+//                   spreadRadius: 1,
+//                   blurRadius: 5,
+//                   offset: Offset(0, 3),
+//                 ),
+//               ],
+//               borderRadius: BorderRadius.only(
+//                 topRight: Radius.circular(100),
+//                 bottomRight: Radius.circular(100)
+//               ),
+//               color: Color.fromARGB(255, 191, 233, 255)
+//             ),
+//           ),

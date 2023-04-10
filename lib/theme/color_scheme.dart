@@ -6,21 +6,20 @@ import 'package:google_fonts/google_fonts.dart';
 @immutable
 class TmoTheme extends ThemeExtension<TmoTheme> {
   const TmoTheme({
-    this.primaryColor = const Color(0xFF6750A4),
-    this.secondaryColor = const Color(0xFF385CA9),
-    this.tertiaryColor = const Color(0xFF586400),
-    this.neutralColor = const Color(0xFF8F9193),
+    this.primaryColor = const Color(0xff0E112B),
+    this.secondaryColor = const Color(0xffE4AE58),
+    this.tertiaryColor = const Color(0xff92c584),
+    this.neutralColor = const Color(0xff005c7a),
   });
 
   final Color primaryColor, secondaryColor, tertiaryColor, neutralColor;
 
   ThemeData toThemeData() {
-    final colorScheme = _scheme().toColorScheme(Brightness.dark);
+    final colorScheme = _scheme().toColorScheme(Brightness.light);
     return _base(colorScheme).copyWith(brightness: colorScheme.brightness);
   }
 
   ThemeData _base(ColorScheme colorScheme) {
-    final isLight = colorScheme.brightness == Brightness.light;
     final primaryTextTheme = GoogleFonts.oswaldTextTheme();
     final secondaryTextTheme = GoogleFonts.montserratTextTheme();
     final textTheme = primaryTextTheme.copyWith(
@@ -31,31 +30,30 @@ class TmoTheme extends ThemeExtension<TmoTheme> {
       useMaterial3: true,
       extensions: [this],
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: isLight ? neutralColor : colorScheme.background,
+      scaffoldBackgroundColor: colorScheme.background,
+      appBarTheme: AppBarTheme(
+          toolbarHeight: 70,
+          centerTitle: true,
+          backgroundColor: colorScheme.background),
+      bottomAppBarTheme: BottomAppBarTheme(
+          color: colorScheme.background),
       tabBarTheme: TabBarTheme(
-          labelColor: colorScheme.onSurface,
-          unselectedLabelColor: colorScheme.onSurface,
+          labelColor: colorScheme.secondary,
+          unselectedLabelColor: colorScheme.onTertiaryContainer,
           indicator: BoxDecoration(
               border: Border(
-                  bottom: BorderSide(color: colorScheme.primary, width: 2)))),
+                  bottom: BorderSide(color: colorScheme.background, width: 0.100)))),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: colorScheme.secondaryContainer,
-          foregroundColor: colorScheme.onSecondaryContainer),
+        elevation: 7,
+        backgroundColor: colorScheme.primaryContainer,
+        foregroundColor: colorScheme.onPrimary),
       navigationRailTheme: NavigationRailThemeData(
-          backgroundColor: isLight ? neutralColor : colorScheme.surface,
+          backgroundColor: colorScheme.surface,
           selectedIconTheme:
               IconThemeData(color: colorScheme.onSecondaryContainer),
           indicatorColor: colorScheme.secondaryContainer),
-      appBarTheme: AppBarTheme(
-          toolbarHeight: 80,
-          shadowColor: Colors.white24,
-          elevation: 1.0,
-          centerTitle: true,
-          backgroundColor: isLight ? neutralColor : colorScheme.surface),
       chipTheme: ChipThemeData(
-          backgroundColor: isLight ? neutralColor : colorScheme.surface),
-      bottomAppBarTheme: BottomAppBarTheme(
-          color: isLight ? neutralColor : colorScheme.surface),
+          backgroundColor: colorScheme.surface),
       iconTheme: IconThemeData(
         color: colorScheme.onPrimary,
       ),
@@ -65,7 +63,9 @@ class TmoTheme extends ThemeExtension<TmoTheme> {
         padding: const EdgeInsets.all(20.0),
         contentTextStyle: textTheme.bodyLarge,
       ),
-      
+      cardTheme: CardTheme(
+        color: colorScheme.background,
+      ),
       
     );
   }
@@ -80,27 +80,33 @@ class TmoTheme extends ThemeExtension<TmoTheme> {
 //for light theme 40,100,90,10 background: 99,10 - for dar 80,20,30,90 bg: 10,90
     return Scheme(
       primary: primary.get(40),
-      onPrimary: primary.get(100),
+      onPrimary: primary.get(20),
       primaryContainer: primary.get(90),
-      onPrimaryContainer: primary.get(10),
-      secondary: secondary.get(40),
-      onSecondary: secondary.get(100),
-      secondaryContainer: secondary.get(90),
+      onPrimaryContainer: primary.get(90),
+
+      secondary: secondary.get(80),
+      onSecondary: secondary.get(20),
+      secondaryContainer: secondary.get(30),
       onSecondaryContainer: secondary.get(10),
+
       tertiary: tertiary.get(40),
-      onTertiary: tertiary.get(100),
-      tertiaryContainer: tertiary.get(90),
+      onTertiary: tertiary.get(20),
+      tertiaryContainer: tertiary.get(30),
       onTertiaryContainer: tertiary.get(10),
+
       error: base.error.get(40),
       onError: base.error.get(100),
       errorContainer: base.error.get(90),
       onErrorContainer: base.error.get(10),
+
       background: neutral.get(99),
       onBackground: neutral.get(10),
       surface: neutral.get(99),
       onSurface: neutral.get(10),
+
       surfaceVariant: base.neutralVariant.get(90), //90
       onSurfaceVariant: base.neutralVariant.get(30), //30
+      
       outline: base.neutralVariant.get(50), //light-50
       shadow: neutral.get(0),
       inverseSurface: neutral.get(20),

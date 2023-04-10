@@ -57,7 +57,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             actions: buildEditingActions(),
             title: const Text(
               'Take Me Out',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 35),
             ),
           ),
           body: SingleChildScrollView(

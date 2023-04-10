@@ -53,7 +53,7 @@ class _ChatPageTabState extends State<ChatPageTab> {
         title: const Text(
           'Chats',
           style: TextStyle(
-            fontSize: 35,
+            fontSize: 30,
           ),
         ),
       ),
@@ -70,8 +70,8 @@ class _ChatPageTabState extends State<ChatPageTab> {
                 ),
               ),
               child: Column(
-                children: const <Widget>[
-                  FavoriteContacts(),
+                children: <Widget>[
+                  //FavoriteContacts(),
                   RecentChats(),
                 ],
               ),

@@ -14,8 +14,11 @@ class _CategorySelectorState extends State<CategorySelector> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      height: 80,
+      height: size.height * 0.1,
+      decoration: BoxDecoration(
+      ),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
@@ -29,15 +32,18 @@ class _CategorySelectorState extends State<CategorySelector> {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20.0,
-                vertical: 15.0,
+                vertical: 20.0,
               ),
-              child: Text(
-                categories[index],
-                style: TextStyle(
-                  //color: index == selectedIndex ? Color.fromARGB(208, 101, 74, 141) : Color.fromARGB(208, 157, 124, 207),
-                  fontSize: 25.0,
-                  letterSpacing: 1.5,
-                  
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                child: Text(
+                  categories[index],
+                  style: TextStyle(
+                    color: index == selectedIndex ? Color(0xff92c584) : Color.fromARGB(255, 14, 17, 43),
+                    fontSize: 25.0,
+                    letterSpacing: 1.5,
+                    
+                  ),
                 ),
               ),
             ),
