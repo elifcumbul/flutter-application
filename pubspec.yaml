@@ -45,6 +45,7 @@ dependencies:
   google_fonts: ^4.0.3
   material_color_utilities: ^0.1.5
   tab_container: ^2.0.0
+  flutter_bloc: ^8.1.2
   
 
 dev_dependencies:

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'components/profile_body.dart';
+import 'components/profile/profile_body.dart';
 
 
 class ProfilePageTab extends StatelessWidget {

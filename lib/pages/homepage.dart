@@ -5,7 +5,7 @@ import '../tabs/chat_page_tab.dart';
 //import '../tabs/event_editing_page_tab.dart';
 import '../tabs/event_editing_page_tab.dart';
 import '../tabs/home_page_tab.dart';
-import '../tabs/map_page_tab.dart';
+import '../tabs/search_page_tab.dart';
 import '../tabs/profile_page_tab.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,22 +30,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
-        // extendBodyBehindAppBar: true,
-        // extendBody: false, //butonun arkasının saydam olması
-        // floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
-        // floatingActionButton: showFab
-        //     ? FloatingActionButton(
-        //         child: const Icon(
-        //           Icons.edit_calendar_rounded,
-        //           size: 30,
-        //         ),
-        //         onPressed: () {
-        //           Navigator.of(context).push(MaterialPageRoute(
-        //               builder: (context) => EventEditingPage(),
-        //             ));
-        //         },
-        //       )
-        //     : null,
         bottomNavigationBar: BottomAppBar( //notch floating butonun etrafıonda boşluk oluturur, shape: CircularNotheRectengular()
           child: TabBar(
             indicatorWeight: 0.100,
@@ -66,7 +50,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           controller: _tabController,
           children: const [
             HomePageTab(),
-            MapPageTab(),
+            SearchPageTab(),
             EventEditingPage(),
             ChatPageTab(),
             ProfilePageTab(),

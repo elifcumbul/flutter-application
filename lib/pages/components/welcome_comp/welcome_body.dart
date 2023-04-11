@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:take_me_out/pages/components/welcome_background.dart';
+import 'package:take_me_out/pages/components/welcome_comp/welcome_background.dart';
 import 'package:take_me_out/pages/login_page.dart';
 
-import '../signup_page.dart';
+import '../../signup_page.dart';
 
 class WelcomeBody extends StatelessWidget {
   @override

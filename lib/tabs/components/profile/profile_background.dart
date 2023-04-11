@@ -31,6 +31,6 @@ class ProfileBackground extends StatelessWidget {
           child,
         ],
       ),
-    );;
+    );
   }
 }

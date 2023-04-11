@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:tab_container/tab_container.dart';
-import 'package:take_me_out/tabs/components/profile_background.dart';
+import 'package:take_me_out/tabs/components/profile/profile_background.dart';
 
-class ProfileBody extends StatefulWidget {
-  const ProfileBody({Key? key}) : super(key: key);
+class OtherProfileBody extends StatefulWidget {
+  const OtherProfileBody({super.key});
 
   @override
-  State<ProfileBody> createState() => _ProfileBodyState();
+  State<OtherProfileBody> createState() => _OtherProfileBodyState();
 }
 
-class _ProfileBodyState extends State<ProfileBody> {
+class _OtherProfileBodyState extends State<OtherProfileBody> {
   @override
   void initState() {
     super.initState();
@@ -79,7 +79,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             child: AspectRatio(
               aspectRatio: 10 / 9,
               child: TabContainer(
-                childPadding: EdgeInsets.only(bottom: 10.0),
+                childPadding: const EdgeInsets.only(bottom: 10.0),
                 radius: 30,
                 tabEdge: TabEdge.top,
                 tabCurve: Curves.easeIn,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:take_me_out/pages/components/rounded_input_field.dart';
 import 'package:take_me_out/pages/components/rounded_password_field.dart';
-import 'package:take_me_out/pages/components/signup_background.dart';
+import 'package:take_me_out/pages/components/signup_comp/signup_background.dart';
 import 'package:take_me_out/pages/login_page.dart';
 
 class SignupBody extends StatelessWidget {
