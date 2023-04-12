@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:take_me_out/widgets/favorite_contacts.dart';
-import 'package:take_me_out/widgets/recent_chats.dart';
+import 'package:take_me_out/tabs/components/chat_comp/favorite_contacts.dart';
+import 'package:take_me_out/tabs/components/chat_comp/recent_chats.dart';
 
 //import '../utils/project_utils.dart';
 import '../pages/homepage.dart';
-import '../widgets/category_selector.dart';
+import 'components/chat_comp/category_selector.dart';
 
 class ChatPageTab extends StatefulWidget {
   const ChatPageTab({Key? key}) : super(key: key);

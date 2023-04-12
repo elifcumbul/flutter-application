@@ -38,6 +38,14 @@ class TmoTheme extends ThemeExtension<TmoTheme> {
       bottomAppBarTheme: BottomAppBarTheme(
           color: colorScheme.background),
       tabBarTheme: TabBarTheme(
+          unselectedLabelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20.0,
+          ),
+          labelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20.0,
+          ),
           labelColor: colorScheme.secondary,
           unselectedLabelColor: colorScheme.onTertiaryContainer,
           indicator: BoxDecoration(

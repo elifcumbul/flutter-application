@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:take_me_out/modals/event_details.dart';
 
 class EventProvider extends ChangeNotifier {

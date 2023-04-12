@@ -108,6 +108,9 @@ flutter:
     - assets/stickers/theatre2.png
     - assets/stickers/boombox.png
     - assets/stickers/lp.png
+    - assets/img/national_park1.png
+    - assets/img/national_park2.png
+    - assets/img/national_park3.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
