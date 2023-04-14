@@ -65,12 +65,6 @@ class TmoTheme extends ThemeExtension<TmoTheme> {
       iconTheme: IconThemeData(
         color: colorScheme.onPrimary,
       ),
-      bannerTheme: MaterialBannerThemeData(
-        backgroundColor: Colors.amber,//isLight ? neutralColor : colorScheme.surface,
-        elevation: 1.0,
-        padding: const EdgeInsets.all(20.0),
-        contentTextStyle: textTheme.bodyLarge,
-      ),
       cardTheme: CardTheme(
         color: colorScheme.background,
       ),

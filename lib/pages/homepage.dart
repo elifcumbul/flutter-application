@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Tab(icon: Icon(Icons.home_rounded)), //groups_rounded
               Tab(
                   icon: Icon(Icons
-                      .location_pin)), //location_pin, map_rounded, event_rounded
+                      .search_rounded)), //location_pin, map_rounded, event_rounded
               Tab(icon: Icon(Icons.edit_calendar_rounded)),
               Tab(icon: Icon(Icons.email_rounded)),
               Tab(icon: Icon(Icons.account_circle))

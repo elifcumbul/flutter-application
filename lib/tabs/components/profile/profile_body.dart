@@ -62,17 +62,30 @@ class _ProfileBodyState extends State<ProfileBody> {
               name: 'Elif Cumbul',
             ),
           ),
-          Container(
-            margin: const EdgeInsets.all(10.0),
-            height: 80.0,
-            padding:
-                const EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
-            child: const Text(
-              '6 friends',
-              style: TextStyle(
-                fontSize: 15.0,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: 125.0),
+                height: 80.0,
+                child: const Text(
+                  '6 followers',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                margin: const EdgeInsets.only(right: 125.0),
+                height: 80.0,
+                child: const Text(
+                  '6 following',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.9,
@@ -249,27 +262,25 @@ class Event extends StatelessWidget {
                             Row(
                               children: [
                                 Expanded(
-                              child: Row(
-                                children: [
-                                  Text("Created At: "),
-                                  Text(
-                                    data.createdDate,
+                                  child: Row(
+                                    children: [
+                                      Text("Created At: "),
+                                      Text(
+                                        data.createdDate,
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "Due Date: "
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      Text("Due Date: "),
+                                      Text(
+                                        data.eventDate,
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    data.eventDate,
-                                  ),
-                                ],
-                              ),
-                            ),
+                                ),
                               ],
                             ),
                           ],

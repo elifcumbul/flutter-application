@@ -73,14 +73,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/users.json
-    - assets/images/Map_pin_icon.png
-    - assets/images/calendar.png
-    - assets/images/destination_pin.png
-    - assets/images/source_pin.png
-    - assets/images/placeholder.png
-    - assets/images/bookmark.png
     - assets/images/calendar_add.png
-    - assets/images/bookedmark.png  
     - assets/images/woman.png 
     - assets/images/circle.png 
     - assets/images/circle_light.png 
@@ -88,29 +81,17 @@ flutter:
     - assets/icons/facebook.png
     - assets/icons/twitter.png
     - assets/icons/clapperboard.png
-    - assets/icons/painting.png
-    - assets/icons/sports.png
-    - assets/icons/theatre.png
-    - assets/icons/vinyl.png
     - assets/stickers/travel.png
     - assets/stickers/holidays.png
-    - assets/stickers/reading.png
-    - assets/stickers/cinema.png
     - assets/stickers/mountain_bike.png
-    - assets/stickers/theatre.png
-    - assets/stickers/travel2.png
-    - assets/stickers/vynil.png
-    - assets/stickers/camping.png
-    - assets/stickers/tourist.png
-    - assets/stickers/camping2.png
-    - assets/stickers/drumstick.png
-    - assets/stickers/opera.png
-    - assets/stickers/theatre2.png
-    - assets/stickers/boombox.png
     - assets/stickers/lp.png
     - assets/img/national_park1.png
     - assets/img/national_park2.png
     - assets/img/national_park3.png
+    - assets/categories/painting.png
+    - assets/categories/sports.png
+    - assets/categories/theatre.png
+    - assets/categories/vinyl.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
