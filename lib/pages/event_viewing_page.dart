@@ -4,7 +4,6 @@ import 'package:take_me_out/modals/event_details.dart';
 import 'package:take_me_out/pages/homepage.dart';
 import 'package:take_me_out/provider/event_provider.dart';
 
-import '../tabs/event_editing_page_tab.dart';
 
 class EventViewingPage extends StatelessWidget {
   final Event event;
@@ -55,14 +54,14 @@ class EventViewingPage extends StatelessWidget {
 
   List<Widget> buildViewingActions(BuildContext context, Event event) {
     return [
-      IconButton(
-        icon: const Icon(Icons.edit),
-        onPressed: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => EventEditingPage(event: event),
-          ),
-        ),
-      ),
+      // IconButton(
+      //   icon: const Icon(Icons.edit),
+      //   onPressed: () => Navigator.of(context).pushReplacement(
+      //     MaterialPageRoute(
+      //       builder: (context) => EventEditingPage(event: event),
+      //     ),
+      //   ),
+      // ),
       IconButton(
         icon: const Icon(Icons.delete),
         onPressed: () {

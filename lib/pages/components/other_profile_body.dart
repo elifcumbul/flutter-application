@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tab_container/tab_container.dart';
-import 'package:take_me_out/tabs/components/profile/profile_background.dart';
+import 'package:take_me_out/tabs/components/profile_comp/profile_background.dart';
 
 class OtherProfileBody extends StatefulWidget {
   const OtherProfileBody({super.key});
@@ -251,7 +251,7 @@ class Event extends StatelessWidget {
                                 Expanded(
                               child: Row(
                                 children: [
-                                  Text("Created At: "),
+                                  const Text("Created At: "),
                                   Text(
                                     data.createdDate,
                                   ),
@@ -261,7 +261,7 @@ class Event extends StatelessWidget {
                             Expanded(
                               child: Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Due Date: "
                                   ),
                                   Text(

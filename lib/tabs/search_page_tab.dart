@@ -11,6 +11,6 @@ class SearchPageTab extends StatefulWidget {
 class _SearchPageTabState extends State<SearchPageTab> {
   @override
   Widget build(BuildContext context) {
-    return SearchBody();
+    return const SearchBody();
   }
 }

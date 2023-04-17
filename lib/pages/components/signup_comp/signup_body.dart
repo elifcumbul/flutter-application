@@ -109,12 +109,12 @@ class SignupBody extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 0.1,
-                    color: Color.fromARGB(255, 14, 17, 43),
+                    color: const Color.fromARGB(255, 14, 17, 43),
                   ),
                   shape: BoxShape.circle,
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                padding: EdgeInsets.all(10),
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.all(10),
                 child: IconButton(
                   icon: Image.asset(
                     'assets/icons/twitter.png',
@@ -128,12 +128,12 @@ class SignupBody extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 0.1,
-                    color: Color.fromARGB(255, 14, 17, 43),
+                    color: const Color.fromARGB(255, 14, 17, 43),
                   ),
                   shape: BoxShape.circle,
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                padding: EdgeInsets.all(10),
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.all(10),
                 child: IconButton(
                   icon: Image.asset(
                     'assets/icons/google_plus.png',
@@ -147,12 +147,12 @@ class SignupBody extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 0.1,
-                    color: Color.fromARGB(255, 14, 17, 43),
+                    color: const Color.fromARGB(255, 14, 17, 43),
                   ),
                   shape: BoxShape.circle,
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                padding: EdgeInsets.all(10),
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.all(10),
                 child: IconButton(
                   icon: Image.asset(
                     'assets/icons/facebook.png',

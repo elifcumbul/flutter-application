@@ -41,7 +41,7 @@ class LoginBody extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context){
-                        return HomePage();
+                        return const HomePage();
                       }
                     ),
                   );
@@ -71,7 +71,7 @@ class LoginBody extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder:(context) {
-                        return SignupPage();
+                        return const SignupPage();
                       },
                     ),
                   );

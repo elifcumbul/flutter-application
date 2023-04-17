@@ -17,7 +17,7 @@ class _CategorySelectorState extends State<CategorySelector> {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.height * 0.1,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
       ),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -35,11 +35,11 @@ class _CategorySelectorState extends State<CategorySelector> {
                 vertical: 20.0,
               ),
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                margin: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Text(
                   categories[index],
                   style: TextStyle(
-                    color: index == selectedIndex ? Color(0xff92c584) : Color.fromARGB(255, 14, 17, 43),
+                    color: index == selectedIndex ? const Color(0xff92c584) : const Color.fromARGB(255, 14, 17, 43),
                     fontSize: 25.0,
                     letterSpacing: 1.5,
                     

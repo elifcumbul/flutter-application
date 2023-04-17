@@ -33,7 +33,7 @@ dependencies:
     sdk: flutter
 
   #handle dates
-  intl: ^0.18.0
+  intl:
   #state management
   provider: ^6.0.5
   google_maps_flutter: ^2.2.3
@@ -46,6 +46,8 @@ dependencies:
   material_color_utilities: ^0.1.5
   tab_container: ^2.0.0
   flutter_bloc: ^8.1.2
+  date_picker_timeline:
+  get:
   
 
 dev_dependencies:
@@ -79,6 +81,7 @@ flutter:
     - assets/images/circle_light.png 
     - assets/icons/google_plus.png
     - assets/icons/facebook.png
+    - assets/images/add.png
     - assets/icons/twitter.png
     - assets/icons/clapperboard.png
     - assets/stickers/travel.png

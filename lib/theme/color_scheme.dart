@@ -32,7 +32,7 @@ class TmoTheme extends ThemeExtension<TmoTheme> {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.background,
       appBarTheme: AppBarTheme(
-          toolbarHeight: 70,
+          toolbarHeight: 50,
           centerTitle: true,
           backgroundColor: colorScheme.background),
       bottomAppBarTheme: BottomAppBarTheme(

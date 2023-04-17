@@ -53,7 +53,7 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
               padding: const EdgeInsets.only(top: 70.0, left: 20.0),
               child: Row(
                 children: [
-                  Icon(Icons.menu, size: 30.0, color: Colors.grey),
+                  const Icon(Icons.menu, size: 30.0, color: Colors.grey),
                   Expanded(
                     child: Container(),
                   ),
@@ -87,7 +87,7 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                   controller: _tabController,
                   //isScrollable: true,
                   //labelPadding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  tabs: [
+                  tabs: const [
                     Tab(text: "Events"),
                     Tab(text: "Friends"),
                   ],
@@ -182,7 +182,7 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                                     Container(
                                       child: Text(
                                         categories.values.elementAt(index),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.grey,
                                         ),
                                       ),

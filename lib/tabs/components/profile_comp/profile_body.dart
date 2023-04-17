@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tab_container/tab_container.dart';
-import 'package:take_me_out/tabs/components/profile/profile_background.dart';
+import 'package:take_me_out/tabs/components/profile_comp/profile_background.dart';
 
 class ProfileBody extends StatefulWidget {
   const ProfileBody({Key? key}) : super(key: key);
@@ -92,7 +92,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             child: AspectRatio(
               aspectRatio: 10 / 9,
               child: TabContainer(
-                childPadding: EdgeInsets.only(bottom: 10.0),
+                childPadding: const EdgeInsets.only(bottom: 10.0),
                 radius: 30,
                 tabEdge: TabEdge.top,
                 tabCurve: Curves.easeIn,
@@ -264,7 +264,7 @@ class Event extends StatelessWidget {
                                 Expanded(
                                   child: Row(
                                     children: [
-                                      Text("Created At: "),
+                                      const Text("Created At: "),
                                       Text(
                                         data.createdDate,
                                       ),
@@ -274,7 +274,7 @@ class Event extends StatelessWidget {
                                 Expanded(
                                   child: Row(
                                     children: [
-                                      Text("Due Date: "),
+                                      const Text("Due Date: "),
                                       Text(
                                         data.eventDate,
                                       ),
