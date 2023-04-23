@@ -48,6 +48,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   date_picker_timeline:
   get:
+  http:
   
 
 dev_dependencies:

@@ -39,7 +39,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                 child: Text(
                   categories[index],
                   style: TextStyle(
-                    color: index == selectedIndex ? const Color(0xff92c584) : const Color.fromARGB(255, 14, 17, 43),
+                    color: index == selectedIndex ? const Color(0xff805600) : const Color.fromARGB(255, 14, 17, 43),
                     fontSize: 25.0,
                     letterSpacing: 1.5,
                     
