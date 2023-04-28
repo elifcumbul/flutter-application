@@ -16,10 +16,18 @@ class SignupBackground extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            bottom: -40,
-            right: -45,
+            top: 30,
+            left: -70,
             child: Image.asset(
-              "assets/stickers/mountain_bike.png",
+              "assets/images/circle.png",
+              width: size.width * 0.8,
+            ),
+          ),
+          Positioned(
+            bottom: -100,
+            right: -90,
+            child: Image.asset(
+              "assets/images/circle_light.png",
               width: size.width * 0.8,
             ),
           ),

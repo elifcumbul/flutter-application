@@ -35,20 +35,22 @@ dependencies:
   #handle dates
   intl:
   #state management
-  provider: ^6.0.5
-  google_maps_flutter: ^2.2.3
+  provider:
+  google_maps_flutter:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  syncfusion_flutter_calendar: ^20.4.49
-  dynamic_color: ^1.5.4
-  google_fonts: ^4.0.3
-  material_color_utilities: ^0.1.5
-  tab_container: ^2.0.0
-  flutter_bloc: ^8.1.2
+  cupertino_icons:
+  syncfusion_flutter_calendar:
+  dynamic_color:
+  google_fonts:
+  material_color_utilities:
+  tab_container:
+  flutter_bloc:
   date_picker_timeline:
   get:
   http:
+  flutter_secure_storage:
+  sqflite:
   
 
 dev_dependencies:
@@ -76,13 +78,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/users.json
-    - assets/images/calendar_add.png
     - assets/images/woman.png 
     - assets/images/circle.png 
     - assets/images/circle_light.png 
     - assets/icons/google_plus.png
     - assets/icons/facebook.png
-    - assets/images/add.png
     - assets/icons/twitter.png
     - assets/icons/clapperboard.png
     - assets/stickers/travel.png

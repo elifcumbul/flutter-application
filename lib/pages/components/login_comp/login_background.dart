@@ -17,10 +17,18 @@ class LoginBackground extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Positioned(
-            bottom: -30,
-            left: -30,
+            top: 120,
+            left: -60,
             child: Image.asset(
-              "assets/stickers/lp.png",
+              "assets/images/circle.png",
+              width: size.width * 0.8 ,
+            ),
+          ),
+          Positioned(
+            bottom: -120,
+            right: -60,
+            child: Image.asset(
+              "assets/images/circle.png",
               width: size.width * 0.8 ,
             ),
           ),

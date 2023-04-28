@@ -20,14 +20,14 @@ class HomeBackground extends StatelessWidget {
               width: size.width * 0.8,
             ),
           ),
-          Positioned(
-            bottom: -40,
-            left: -45,
-            child: Image.asset(
-              "assets/images/circle_light.png",
-              width: size.width * 0.7,
-            ),
-          ),
+          // Positioned(
+          //   bottom: -40,
+          //   left: -45,
+          //   child: Image.asset(
+          //     "assets/images/circle_light.png",
+          //     width: size.width * 0.7,
+          //   ),
+          // ),
           child,
         ],
       ),

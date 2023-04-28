@@ -3,7 +3,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:take_me_out/pages/welcome_page.dart';
 import 'package:take_me_out/theme/color_scheme.dart';
 
-void main() {
+Future<void> main() async{
   runApp(const MyApp());
 }
 

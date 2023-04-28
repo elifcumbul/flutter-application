@@ -12,14 +12,14 @@ class SearchBackground extends StatelessWidget {
       width: double.infinity,
       child: Stack(
         children: [
-          Positioned(
-            bottom: -200,
-            right: -75,
-            child: Image.asset(
-              "assets/images/circle.png",
-              width: size.width * 0.8,
-            ),
-          ),
+          // Positioned(
+          //   bottom: -200,
+          //   right: -75,
+          //   child: Image.asset(
+          //     "assets/images/circle.png",
+          //     width: size.width * 0.8,
+          //   ),
+          // ),
           Positioned(
             top: -50,
             left: -45,

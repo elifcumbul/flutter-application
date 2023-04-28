@@ -14,9 +14,9 @@ class EventEditingBackground extends StatelessWidget {
         children: [
           Positioned(
             top: -150,
-            right: -45,
+            right: -47,
             child: Image.asset(
-              "assets/images/circle_light.png",
+              "assets/images/circle.png",
               width: size.width * 0.8,
             ),
           ),
