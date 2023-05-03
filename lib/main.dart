@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:take_me_out/pages/homepage.dart';
 import 'package:take_me_out/pages/welcome_page.dart';
 import 'package:take_me_out/theme/color_scheme.dart';
 
-Future<void> main() async{
-  runApp(const MyApp());
+Future<void> main() async {
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,8 +21,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Take Me Out',
       theme: tmoTheme.toThemeData(),
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/home':
+            return PageTransition(
+                child: const HomePage(),
+                type: PageTransitionType.fade,
+                settings: settings);
+          default:
+            return null;
+        }
+      },
       home: const WelcomePage(),
     );
   }
 }
-

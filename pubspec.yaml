@@ -50,8 +50,9 @@ dependencies:
   get:
   http:
   flutter_secure_storage:
-  sqflite:
-  
+  dio:
+  flutter_riverpod:
+  page_transition:
 
 dev_dependencies:
   flutter_test:

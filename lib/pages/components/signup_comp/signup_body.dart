@@ -1,30 +1,20 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:take_me_out/pages/components/signup_comp/signup_background.dart';
 import 'package:take_me_out/pages/login_page.dart';
-import 'package:http/http.dart' as http;
 
 class SignupBody extends StatefulWidget {
+  const SignupBody({Key? key}) : super(key: key);
+
   @override
   State<SignupBody> createState() => _SignupBodyState();
 }
 
 class _SignupBodyState extends State<SignupBody> {
-  final _formKey = GlobalKey<FormState>();
-
-  String _name = '';
-  String _surname = '';
-  String _username = '';
-  String _email = '';
-  String _password = '';
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Form(
-      key: _formKey,
-      child: SignupBackground(
+    return SignupBackground(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -43,14 +33,8 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Name',
                   border: InputBorder.none,
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your surname';
-                  }
-                  return null;
-                },
                 onSaved: (newValue) {
-                  _name = newValue!;
+                  
                 },
               ),
             ),
@@ -68,14 +52,8 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Surname',
                   border: InputBorder.none,
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your surname';
-                  }
-                  return null;
-                },
                 onSaved: (newValue) {
-                  _surname = newValue!;
+                  
                 },
               ),
             ),
@@ -93,14 +71,8 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Username',
                   border: InputBorder.none,
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your surname';
-                  }
-                  return null;
-                },
                 onSaved: (newValue) {
-                  _username = newValue!;
+                  
                 },
               ),
             ),
@@ -119,14 +91,8 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Email',
                   border: InputBorder.none,
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your surname';
-                  }
-                  return null;
-                },
                 onSaved: (newValue) {
-                  _email = newValue!;
+                  
                 },
               ),
             ),
@@ -145,14 +111,8 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Password',
                   border: InputBorder.none,
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your surname';
-                  }
-                  return null;
-                },
                 onSaved: (newValue) {
-                  _password = newValue!;
+                  
                 },
               ),
             ),
@@ -169,7 +129,9 @@ class _SignupBodyState extends State<SignupBody> {
                     backgroundColor: MaterialStateProperty.all(
                         const Color.fromARGB(255, 14, 17, 43)),
                   ),
-                  onPressed: _submitForm,
+                  onPressed: () {
+                    
+                  },
                   child: const Text(
                     "SIGNUP",
                     style: TextStyle(
@@ -294,8 +256,8 @@ class _SignupBodyState extends State<SignupBody> {
             ),
           ],
         ),
-      ),
-    );
+      );
+    
   }
 
   Expanded buildDivider() {
@@ -305,54 +267,5 @@ class _SignupBodyState extends State<SignupBody> {
         height: 1.5,
       ),
     );
-  }
-
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      _registerUser();
-    }
-  }
-
-  void _registerUser() async {
-    //fetch data from .Net API
-    final response = await http.post(
-      Uri.parse('https://your-api-endpoint.com/register'),
-      body: {
-        'name': _name,
-        'surname': _surname,
-        'userName': _username,
-        'email': _email,
-        'password': _password,
-      },
-    );
-
-    if (response.statusCode == 200) {
-      //User regiistered successfully
-      //Navigate to login? page or show a success message
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
-      );
-    } else {
-      //handle error
-      //show error message or retry registration
-      final body = json.decode(response.body);
-      final message =
-          body['message'] ?? 'An error occurred. Please try again later.';
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Error'),
-          content: Text(message),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
-    }
   }
 }
