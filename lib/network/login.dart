@@ -1,18 +1,29 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:take_me_out/network/api.dart';
-
 import '../models/login_model.dart';
 import '../models/login_result_model.dart';
 
+
 Future<LoginResultModel> login(LoginModel login) async {
-  var dataSubmit = {
-    "userNameOrMail": login.userNameOrMail,
-    "Password": login.password
+  Dio dio = new Dio();
+  (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+      (HttpClient client) {
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => true;
+    return client;
   };
 
-  var result = await Dio().post('$mainAPI$loginAPI',
+  var dataSubmit = {
+    "userNameOrMail": login.userNameOrMail,
+    "password": login.password
+  };
+
+
+  var result = await dio.post(loginAPI,
     options: Options(
       headers: {
         Headers.contentTypeHeader: "application/json",
@@ -24,9 +35,10 @@ Future<LoginResultModel> login(LoginModel login) async {
     data: jsonEncode(dataSubmit)
   );
 
+  print(result);
   if(result.statusCode == 401) {
-    return LoginResultModel(401, 'Login failed ! Please check user/password');
+    return LoginResultModel(statusCode: 401, message: 'Login failed ! Please check user/password');
   } else {
-    return LoginResultModel(result.statusCode!.toInt(), result.data.toString());
+    return LoginResultModel(statusCode: result.statusCode, message: result.data.toString());
   }
 }

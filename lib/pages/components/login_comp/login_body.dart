@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:take_me_out/models/login_model.dart';
+import 'package:take_me_out/network/login.dart';
 import 'package:take_me_out/pages/components/rounded_input_field.dart';
 import 'package:take_me_out/pages/components/rounded_password_field.dart';
+import 'package:take_me_out/pages/homepage.dart';
 import 'package:take_me_out/pages/signup_page.dart';
+import 'package:take_me_out/state/state.dart';
 import 'login_background.dart';
 
 class LoginBody extends StatefulWidget {
@@ -14,6 +18,8 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
+  String? userNameOrMail;
+  String? passsword;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +30,18 @@ class _LoginBodyState extends State<LoginBody> {
         children: [
           RoundedInputField(
             hintText: "Email",
-            onChanged: (value) {},
+            onChanged: (value) {
+              setState(() {
+                userNameOrMail = value;
+              });
+            },
           ),
           RoundedPasswordField(
-            onChanged: (value) {},
+            onChanged: (value) {
+              setState(() {
+                passsword = value;
+              });
+            },
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
@@ -42,6 +56,17 @@ class _LoginBodyState extends State<LoginBody> {
                       const Color.fromARGB(255, 14, 17, 43)),
                 ),
                 onPressed: () {
+                  if(userNameOrMail != null && passsword != null && bearerToken != null){
+                    LoginModel loginData = LoginModel(
+                    userNameOrMail: userNameOrMail,
+                    password: passsword,
+                  );
+                  login(loginData);
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                  }
+
                   
                 },
                 child: const Text(
