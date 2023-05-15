@@ -152,9 +152,14 @@ class _EventEditingPageState extends State<EventEditingPage> {
   _validateData() {
     if (_titleController.text.isNotEmpty &&
         _descriptionController.text.isNotEmpty) {
-      //add to database
-     // _addEventToDb();
-      //Get.back();
+      // setState(() {
+      //   _event.title = _titleController.text;
+      //   _event.description = _descriptionController.text;
+      //   _event.date = _selectedDate.toString();
+      //   _event.startTime = _startTime.toString();
+      //   _event.endTime = _endTime.toString();
+      //   _event.category = _selectedCategory.toString();
+      // });
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const HomePage()));
     } else if (_titleController.text.isEmpty ||

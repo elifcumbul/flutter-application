@@ -6,6 +6,7 @@ import 'package:take_me_out/pages/components/rounded_password_field.dart';
 import 'package:take_me_out/pages/homepage.dart';
 import 'package:take_me_out/pages/signup_page.dart';
 import 'package:take_me_out/state/state.dart';
+import 'package:take_me_out/view_model/main/main_view_model.dart';
 import 'login_background.dart';
 
 class LoginBody extends StatefulWidget {
@@ -18,8 +19,10 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
-  String? userNameOrMail;
-  String? passsword;
+  
+  // String? userNameOrMail;
+  // String? passsword;
+  LoginModel loginModel = new LoginModel();
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +35,14 @@ class _LoginBodyState extends State<LoginBody> {
             hintText: "Email",
             onChanged: (value) {
               setState(() {
-                userNameOrMail = value;
+                loginModel.userNameOrMail = value;
               });
             },
           ),
           RoundedPasswordField(
             onChanged: (value) {
               setState(() {
-                passsword = value;
+                loginModel.password = value;
               });
             },
           ),
@@ -56,18 +59,20 @@ class _LoginBodyState extends State<LoginBody> {
                       const Color.fromARGB(255, 14, 17, 43)),
                 ),
                 onPressed: () {
-                  if(userNameOrMail != null && passsword != null && bearerToken != null){
-                    LoginModel loginData = LoginModel(
-                    userNameOrMail: userNameOrMail,
-                    password: passsword,
-                  );
-                  login(loginData);
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
+                  // if(loginModel != null && passsword != null && bearerToken != null){
+                  //   LoginModel loginData = LoginModel(
+                  //   userNameOrMail: userNameOrMail,
+                  //   password: passsword,
+                  // );
+                  // login(loginData);
+                  // Navigator.push(context,
+                  //   MaterialPageRoute(builder: (context) => const HomePage()),
+                  // );
+                  // }
+                  if(loginModel.userNameOrMail != null && loginModel.password != null && bearerToken != null){
+                    login(loginModel);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                   }
-
-                  
                 },
                 child: const Text(
                   "LOGIN",

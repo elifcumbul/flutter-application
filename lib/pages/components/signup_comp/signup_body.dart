@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:take_me_out/models/register_model.dart';
 import 'package:take_me_out/pages/components/signup_comp/signup_background.dart';
 import 'package:take_me_out/pages/login_page.dart';
+import 'package:take_me_out/services/registration_service.dart';
 
 class SignupBody extends StatefulWidget {
   const SignupBody({Key? key}) : super(key: key);
@@ -10,11 +12,84 @@ class SignupBody extends StatefulWidget {
 }
 
 class _SignupBodyState extends State<SignupBody> {
+  final _formKey = GlobalKey<FormState>();
+
+  final _nameController = TextEditingController();
+  final _surnameController = TextEditingController();
+  final _userNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  bool _isLoading = false;
+
+  // final _user = RegisterModel(
+  //     name: '',
+  //     surname: '',
+  //     userName: '',
+  //     email: '',
+  //     password: ''
+  // );
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _surnameController.dispose();
+    _userNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _register() async {
+    if (_formKey.currentState!.validate()) {
+      final _registrationService = RegistrationService();
+      // final success = await registrationService.register(_user);
+      // if (success) {
+      //   //Redirect user to login screen
+      // } else {
+      //   //Display error message
+      // }
+      setState(() {
+        _isLoading = true;
+      });
+
+      final registration = RegisterModel(
+        name: _nameController.text,
+        surname: _surnameController.text,
+        userName: _userNameController.text,
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+
+      try {
+        // Submit the registration data to the server
+        final success = await _registrationService.register(registration);
+
+        if (success == true) {
+          // If registration is successful, show a success message
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registration successful!')));
+
+          // Navigate to the login screen
+        } else {
+            // If registration is not successful, show an error message
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(
+            'Registration failed. Please try again.')));
+        }
+      } catch (error) {
+        // If there's an error, show an error message
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:
+          Text('An error occurred. Please try again.')));
+      }
+    }
+  
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SignupBackground(
+    return Form(
+      key: _formKey,
+      child: SignupBackground(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -33,9 +108,16 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Name',
                   border: InputBorder.none,
                 ),
-                onSaved: (newValue) {
-                  
+                controller: _nameController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
                 },
+                // onSaved: (newValue) {
+                //   _user.name = newValue!;
+                // },
               ),
             ),
             Container(
@@ -52,9 +134,16 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Surname',
                   border: InputBorder.none,
                 ),
-                onSaved: (newValue) {
-                  
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your surname';
+                  }
+                  return null;
                 },
+                controller: _surnameController,
+                // onSaved: (newValue) {
+                //   _user.surname = newValue!;
+                // },
               ),
             ),
             Container(
@@ -71,9 +160,16 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Username',
                   border: InputBorder.none,
                 ),
-                onSaved: (newValue) {
-                  
+                controller: _userNameController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your username';
+                  }
+                  return null;
                 },
+                // onSaved: (newValue) {
+                //   _user.userName = newValue!;
+                // },
               ),
             ),
             Container(
@@ -91,9 +187,16 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Email',
                   border: InputBorder.none,
                 ),
-                onSaved: (newValue) {
-                  
+                controller: _emailController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  return null;
                 },
+                // onSaved: (newValue) {
+                //   _user.email = newValue!;
+                // },
               ),
             ),
             Container(
@@ -111,9 +214,16 @@ class _SignupBodyState extends State<SignupBody> {
                   labelText: 'Password',
                   border: InputBorder.none,
                 ),
-                onSaved: (newValue) {
-                  
+                controller: _passwordController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
                 },
+                // onSaved: (newValue) {
+                //   _user.password = newValue!;
+                // },
               ),
             ),
             Container(
@@ -129,9 +239,45 @@ class _SignupBodyState extends State<SignupBody> {
                     backgroundColor: MaterialStateProperty.all(
                         const Color.fromARGB(255, 14, 17, 43)),
                   ),
-                  onPressed: () {
-                    
-                  },
+                  onPressed: _register,
+                  // onPressed: () async {
+                  //   if (_formKey.currentState!.validate()) {
+                  //     final registrationService = RegistrationService();
+                  //     // If the form is valid, create a new instance of RegistrationModel
+                  //     final registrationData = RegisterModel(
+                  //       name: _nameController.text.trim(),
+                  //       surname: _surnameController.text.trim(),
+                  //       userName: _userNameController.text.trim(),
+                  //       email: _emailController.text.trim(),
+                  //       password: _passwordController.text.trim(),
+                  //     );
+
+                  //     try {
+                  //       // Submit the registration data to the server
+                  //       final response = await registrationService
+                  //           .register(registrationData);
+
+                  //       if (response == true) {
+                  //         // If registration is successful, show a success message
+                  //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  //             content: Text('Registration successful!')));
+
+                  //         // Navigate to the login screen
+                  //         Navigator.of(context).pushReplacementNamed('/login');
+                  //       } else {
+                  //         // If registration is not successful, show an error message
+                  //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  //             content: Text(
+                  //                 'Registration failed. Please try again.')));
+                  //       }
+                  //     } catch (error) {
+                  //       // If there's an error, show an error message
+                  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  //           content:
+                  //               Text('An error occurred. Please try again.')));
+                  //     }
+                  //   }
+                  // },
                   child: const Text(
                     "SIGNUP",
                     style: TextStyle(
@@ -256,8 +402,8 @@ class _SignupBodyState extends State<SignupBody> {
             ),
           ],
         ),
-      );
-    
+      ),
+    );
   }
 
   Expanded buildDivider() {

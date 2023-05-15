@@ -25,14 +25,14 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case '/home':
             return PageTransition(
-                child: const HomePage(),
+                child: const HomePage(), //Welcome?
                 type: PageTransitionType.fade,
                 settings: settings);
           default:
             return null;
         }
       },
-      home: const WelcomePage(),
+      home: WelcomePage(),
     );
   }
 }

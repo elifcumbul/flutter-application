@@ -35,10 +35,11 @@ Future<LoginResultModel> login(LoginModel login) async {
     data: jsonEncode(dataSubmit)
   );
 
-  print(result);
   if(result.statusCode == 401) {
     return LoginResultModel(statusCode: 401, message: 'Login failed ! Please check user/password');
-  } else {
+  } else if(result.statusCode == 200) {
     return LoginResultModel(statusCode: result.statusCode, message: result.data.toString());
+  } else {
+    return LoginResultModel(statusCode: result.statusCode!.toInt(), message: result.data.toString());
   }
 }

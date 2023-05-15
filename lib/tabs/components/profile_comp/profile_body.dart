@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tab_container/tab_container.dart';
 import 'package:take_me_out/tabs/components/profile_comp/profile_background.dart';
 
+import '../../../models/event.dart';
+
 class ProfileBody extends StatefulWidget {
   const ProfileBody({Key? key}) : super(key: key);
 

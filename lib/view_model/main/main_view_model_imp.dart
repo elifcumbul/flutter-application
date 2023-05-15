@@ -4,16 +4,16 @@ import 'package:take_me_out/models/login_result_model.dart';
 import 'package:take_me_out/models/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:take_me_out/state/state.dart';
-import 'package:take_me_out/view_model/main_view_model.dart';
+import 'package:take_me_out/view_model/main/main_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../network/login.dart';
+import '../../network/login.dart';
 
 class MainViewModelImp implements MainViewModel {
-  
   @override
   void changeLoading(BuildContext context) {
     context.read().state.isLoading = !(context.read().state.isLoading);
+    
   }
 
   @override
