@@ -53,6 +53,7 @@ dependencies:
   dio:
   flutter_riverpod:
   page_transition:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
