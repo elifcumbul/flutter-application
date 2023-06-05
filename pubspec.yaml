@@ -54,6 +54,10 @@ dependencies:
   flutter_riverpod:
   page_transition:
   shared_preferences:
+  jwt_decoder:
+  image_picker:
+  path_provider:
+  dropdown_textfield:
 
 dev_dependencies:
   flutter_test:

@@ -4,11 +4,11 @@ import 'components/profile_comp/profile_body.dart';
 
 
 class ProfilePageTab extends StatelessWidget {
-  const ProfilePageTab({super.key});
+  ProfilePageTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const ProfileBody();
+    return ProfileBody();
   }
 }
 

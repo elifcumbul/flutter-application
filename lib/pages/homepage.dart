@@ -21,14 +21,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
     //final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return DefaultTabController(
-      length: 5,
+      length: 4,
       child: Scaffold(
         bottomNavigationBar: BottomAppBar( //notch floating butonun etrafıonda boşluk oluturur, shape: CircularNotheRectengular()
           child: TabBar(
@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   icon: Icon(Icons
                       .search_rounded)), //location_pin, map_rounded, event_rounded
               Tab(icon: Icon(Icons.edit_calendar_rounded)),
-              Tab(icon: Icon(Icons.email_rounded)),
+              //Tab(icon: Icon(Icons.email_rounded)),
               Tab(icon: Icon(Icons.account_circle))
             ],
           ),
@@ -48,11 +48,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
         body: TabBarView(
           controller: _tabController,
-          children: const [
+          children:[
             HomePageTab(),
             SearchPageTab(),
             EventEditingPage(),
-            ChatPageTab(),
+            //ChatPageTab(),
             ProfilePageTab(),
           ],
         ),

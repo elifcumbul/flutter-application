@@ -1,9 +1,12 @@
+import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:take_me_out/pages/components/input_field.dart';
 import 'package:take_me_out/pages/homepage.dart';
 import 'package:take_me_out/tabs/components/event_comp/event_editing_background.dart';
+
+import '../contollers/add_event_controller.dart';
 
 
 class EventEditingPage extends StatefulWidget {
@@ -14,15 +17,45 @@ class EventEditingPage extends StatefulWidget {
 }
 
 class _EventEditingPageState extends State<EventEditingPage> {
-  //final EventController _eventController = Get.put(EventController());
+  AddEventController addEventController = Get.put(AddEventController());
+
+
+  late String categoryName = "";
+
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
-  String _endTime = "9:30 PM";
   String _startTime = DateFormat('hh:mm a').format(DateTime.now()).toString();
-  int _selectedCategory = 0;
+  String _selectedCategory = "";
+  int _selectedIndex = 0;
+  
+
+ @override
+  void initState() {
+    addEventController.categoryIdController = TextEditingController();
+    addEventController.nameController = TextEditingController();
+    addEventController.descriptionController = TextEditingController();
+    addEventController.eventDateController = TextEditingController();
+    addEventController.eventTimeController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    addEventController.categoryIdController.dispose();
+    addEventController.nameController.dispose();
+    addEventController.eventDateController.dispose();
+    addEventController.descriptionController.dispose();
+    addEventController.eventTimeController.dispose();
+    super.dispose();
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return EventEditingBackground(
       child: Container(
         margin: const EdgeInsets.only(top: 70.0),
@@ -52,12 +85,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
               MyInputField(
                 title: "Title",
                 hint: "Add Title",
-                controller: _titleController,
+                controller: addEventController.nameController,
               ),
               MyInputField(
                 title: "Description",
                 hint: "Add Description",
-                controller: _descriptionController,
+                controller: addEventController.descriptionController,
               ),
               MyInputField(
                 title: "Date",
@@ -68,6 +101,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
                     onPressed: () {
                       _getDateFromUser();
                     }),
+                //controller: addEventController.eventDateController,
               ),
               Row(
                 children: [
@@ -82,19 +116,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
                         icon: const Icon(Icons.access_time_rounded),
                         color: const Color(0xff805600),
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    child: MyInputField(
-                      title: "End Time",
-                      hint: _endTime,
-                      widget: IconButton(
-                        onPressed: () {
-                          _getTimeFromUser(isStartTime: false);
-                        },
-                        icon: const Icon(Icons.access_time_rounded),
-                        color: const Color(0xff805600),
-                      ),
+                      //controller: addEventController.eventTimeController,
                     ),
                   ),
                 ],
@@ -103,14 +125,54 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 height: 10.0,
               ),
               Container(
-                margin:
-                    const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-                child: Row(
-                  children: [
-                    _categorySelection(),
-                  ],
+                 margin:
+                    const EdgeInsets.only(top: 20.0, left: 20.0, right: 180.0),
+                child: const Text(
+                  "Categories",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Color(0xff805600),
+                  ),
                 ),
               ),
+              Container(
+                margin:
+                    const EdgeInsets.only(top: 10.0, left: 20.0, right: 180.0),
+                child: Row(
+                children: [
+                  Expanded(
+                  //   child: DropDownTextField(
+                  //     controller: addEventController.categoryIdController,
+                  //     dropDownItemCount: 4,
+                  //     dropDownList: const [
+                  //       DropDownValueModel(name: 'Art', value: "050a0e67-560b-4095-e037-08db65163e3c"),
+                  //       DropDownValueModel(name: 'Sport', value: "4623a530-197d-4dc4-e039-08db65163e3c"),
+                  //       DropDownValueModel(name: 'Music', value: "1a864f26-2c56-475a-e038-08db65163e3c"),
+                  //       DropDownValueModel(name: 'Theatre', value: "cfd679d9-270b-443f-e03a-08db65163e3c"),
+                  //     ],
+                  //   ),
+                    child: DropdownButton(
+                      iconEnabledColor: Color(0xff805600),
+                      isExpanded: true,
+                      hint: Text("Art"),
+                      items: const [
+                        DropdownMenuItem(child: Text("Art"), value: "050a0e67-560b-4095-e037-08db65163e3c"),
+                        DropdownMenuItem(child: Text("Sport"), value: "4623a530-197d-4dc4-e039-08db65163e3c"),
+                        DropdownMenuItem(child: Text("Music"), value: "1a864f26-2c56-475a-e038-08db65163e3c"),
+                        DropdownMenuItem(child: Text("Theatre"), value: "cfd679d9-270b-443f-e03a-08db65163e3c")
+                      ],
+                      onChanged: (String? value) {
+                        setState(() {
+                          addEventController.categoryIdController.text = value!;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+                
+              ),
+              
               const SizedBox(
                 height: 30.0,
               ),
@@ -130,7 +192,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
                         backgroundColor: MaterialStateProperty.all(
                             const Color.fromARGB(255, 14, 17, 43)),
                       ),
-                      onPressed: () => _validateData(),
+                      onPressed: () {
+                        addEventController.addEvent();
+                      },
                       child: const Text(
                         "Add Event",
                         style: TextStyle(
@@ -148,52 +212,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
       ),
     );
   }
-
-  _validateData() {
-    if (_titleController.text.isNotEmpty &&
-        _descriptionController.text.isNotEmpty) {
-      // setState(() {
-      //   _event.title = _titleController.text;
-      //   _event.description = _descriptionController.text;
-      //   _event.date = _selectedDate.toString();
-      //   _event.startTime = _startTime.toString();
-      //   _event.endTime = _endTime.toString();
-      //   _event.category = _selectedCategory.toString();
-      // });
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const HomePage()));
-    } else if (_titleController.text.isEmpty ||
-        _descriptionController.text.isEmpty) {
-      Get.snackbar(
-        "Required",
-        "All fields are required!",
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.white,
-        icon: const Icon(
-          Icons.warning_amber_rounded,
-          color: Color(0xff690005),
-        ),
-        duration: const Duration(seconds: 2),
-        colorText: Color(0xffffb4ab),
-      );
-    }
-  }
-
-  // _addEventToDb() async{
-  //   //event we want to add to the DB(passing data to our model)
-  //   int value = await _eventController.addEvent(
-  //     event: Event(
-  //       description: _descriptionController.text,
-  //       title: _titleController.text,
-  //       date: DateFormat.yMd().format(_selectedDate),
-  //       startTime: _startTime,
-  //       endTime: _endTime,
-  //       category: _selectedCategory,
-  //       isComplete: 0,
-  //     )
-  //   );
-  //   print("$value");
-  // }
 
   _categorySelection() {
     return Column(
@@ -214,7 +232,17 @@ class _EventEditingPageState extends State<EventEditingPage> {
           return GestureDetector(
             onTap: (() {
               setState(() {
-                _selectedCategory = index;
+                if(index==0){
+                  categoryName = "art";
+                }else if(index==1){
+                  categoryName = "sport";
+                }else if(index==2){
+                  categoryName = "music";
+                }else if(index==3){
+                  categoryName = "theatre";
+                }
+                _selectedIndex = index;
+                _selectedCategory = categoryName;
               });
             }),
             child: Padding(
@@ -228,7 +256,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
                         : index == 2
                             ? const AssetImage('assets/categories/vinyl.png')
                             : const AssetImage('assets/categories/theatre.png'),
-                child: _selectedCategory == index
+                child: _selectedIndex == index
                     ? const CircleAvatar(
                         radius: 18,
                         backgroundColor: Color(0xff805600),
@@ -245,17 +273,14 @@ class _EventEditingPageState extends State<EventEditingPage> {
   _getTimeFromUser({required bool isStartTime}) async {
     var pickedTime = await _showTimePicker();
     String _formatedTime = pickedTime.format(context);
+
     if (pickedTime == null) {
       print("Time canceled");
     } else if (isStartTime == true) {
       setState(() {
-        _startTime = _formatedTime;
+        addEventController.eventTimeController.text = _formatedTime;
       });
-    } else if (isStartTime == false) {
-      setState(() {
-        _endTime = _formatedTime;
-      });
-    }
+    } 
   }
 
   _showTimePicker() {
@@ -278,7 +303,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
     if (_pickerDate != null) {
       setState(() {
-        _selectedDate = _pickerDate;
+        addEventController.eventDateController.text = DateFormat.yMd().format(_pickerDate).toString();
       });
     } else {
       print("it's null or something is wrong");
