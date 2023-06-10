@@ -16,7 +16,7 @@ class SerpApiController extends GetxController {
   fetchData() async {
     try {
       http.Response response = await http.get(Uri.parse(
-          'https://serpapi.com/search?api_key=cafd7ffffe328924d0f90c15e6ac9f5b11a5f99b3d34e1b9fffae9ee951d08cb&engine=google_events&no_cache=true&q=Events+in+Izmir&htichips=date:today'));
+          'key'));
 
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);
