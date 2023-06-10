@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tab_container/tab_container.dart';
 import 'package:take_me_out/contollers/add_photo_controller.dart';
 import 'package:take_me_out/contollers/user_controller.dart';
-import 'package:take_me_out/models/user_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:take_me_out/tabs/components/profile_comp/profile_background.dart';
@@ -203,39 +201,6 @@ class _ProfileBodyState extends State<ProfileBody> {
                     ),
                   ],
                 ),
-                // SizedBox(
-                //   width: MediaQuery.of(context).size.width * 0.9,
-                //   child: AspectRatio(
-                //     aspectRatio: 10 / 9,
-                //     child: TabContainer(
-                //       childPadding: const EdgeInsets.only(bottom: 10.0),
-                //       radius: 30,
-                //       tabEdge: TabEdge.top,
-                //       tabCurve: Curves.easeIn,
-                //       transitionBuilder: (child, animation) {
-                //         animation = CurvedAnimation(
-                //             curve: Curves.easeIn, parent: animation);
-                //         return SlideTransition(
-                //           position: Tween(
-                //             begin: const Offset(0.2, 0.0),
-                //             end: const Offset(0.0, 0.0),
-                //           ).animate(animation),
-                //           child: FadeTransition(
-                //             opacity: animation,
-                //             child: child,
-                //           ),
-                //         );
-                //       },
-                //       colors: const <Color>[
-                //         Color(0xffbfe9ff),
-                //         Color(0xff92c584),
-                //         //Color(0xff92c584),
-                //       ],
-                //       children: _getChildren1(),
-                //       tabs: _getTabs1(),
-                //     ),
-                //   ),
-                // ),
                 Container(
                   margin: EdgeInsets.only(left: 20.0, right: 250.0),
                   padding: EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
@@ -244,17 +209,16 @@ class _ProfileBodyState extends State<ProfileBody> {
                       //   begin: Alignment.topCenter,
                       //   end: Alignment.bottomCenter,
                       //   colors: [
-                          
+
                       //     Color(0xff92c584),
                       //     Colors.white,
                       //   ],
                       // ),
                       //color: const Color(0xffbfe9ff),
-                      borderRadius: BorderRadius.circular(20)
-                    ),
+                      borderRadius: BorderRadius.circular(20)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         "Created Events",
                         style: TextStyle(
@@ -266,14 +230,15 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ),
                 Expanded(
                   child: Container(
-                    margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15.0),
+                    margin: const EdgeInsets.only(
+                        left: 20.0, right: 20.0, bottom: 15.0),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
-                          Colors.white,
-                          Color(0xff92c584),
+                          Color(0xffbfe9ff),
+                          Color(0xff95d785),
                         ],
                       ),
                       color: const Color(0xffbfe9ff),
@@ -324,17 +289,17 @@ class _ProfileBodyState extends State<ProfileBody> {
                                         ),
                                         Row(
                                           children: [
-                                            Expanded(
-                                              flex: 1,
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    // user.userModel!.users!.events?[index].categoryId ??
-                                                    "no category",
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
+                                            // Expanded(
+                                            //   flex: 1,
+                                            //   child: Row(
+                                            //     children: [
+                                            //       Text(
+                                            //         // user.userModel!.users!.events?[index].categoryId ??
+                                            //         "no category",
+                                            //       ),
+                                            //     ],
+                                            //   ),
+                                            // ),
                                             Expanded(
                                               flex: 1,
                                               child: Row(
@@ -405,200 +370,3 @@ class _ProfileBodyState extends State<ProfileBody> {
           ));
   }
 }
-
-
-// List<Widget> _getChildren1() {
-//   UserController userController = Get.put(UserController());
-
-//   List<Events> events = userController.userModel!.users!.events!.toList();
-
-//   return events.map((e) => Event(data: e)).toList();
-// }
-
-// List<String> _getTabs1() {
-//   return <String>['Created', 'Saved'];
-// }
-
-// class Event extends StatelessWidget {
-//   final Color? color;
-//   final Events data;
-//   UserController user = Get.put(UserController());
-
-//   Event({
-//     Key? key,
-//     this.color,
-//     required this.data,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         Container(
-//           decoration: BoxDecoration(
-//             color: color,
-//             borderRadius: BorderRadius.circular(14.0),
-//           ),
-//         ),
-//         Expanded(
-//           child: ListView.builder(
-//             itemCount: user.userModel!.users!.events?.length, //kEvents.length
-//             itemBuilder: (context, index) {
-//               return Row(
-//                 children: [
-//                   Expanded(
-//                     child: Card(
-//                       margin: const EdgeInsets.only(
-//                           right: 10.0, left: 10.0, bottom: 10.0),
-//                       child: Container(
-//                         margin: const EdgeInsets.symmetric(horizontal: 10.0),
-//                         padding: const EdgeInsets.symmetric(vertical: 15.0),
-//                         height: 110.0,
-//                         child: Column(
-//                           children: [
-//                             Row(
-//                               children: [
-//                                 Expanded(
-//                                   child: Row(
-//                                     children: [
-//                                       Text(
-//                                         user.userModel!.users!.events?[index].name ?? "no name",
-//                                         style: const TextStyle(
-//                                           fontSize: 20.0,
-//                                         ),
-//                                       ),
-//                                     ],
-//                                   ),
-//                                 ),
-//                                 const Spacer(flex: 1),
-//                               ],
-//                             ),
-//                             Row(
-//                               children: [
-//                                 Expanded(
-//                                   flex: 1,
-//                                   child: Row(
-//                                     children: [
-//                                       Text(
-//                                         // user.userModel!.users!.events?[index].categoryId ??
-//                                         "no category",
-//                                       ),
-//                                     ],
-//                                   ),
-//                                 ),
-//                                 Expanded(
-//                                   flex: 1,
-//                                   child: Row(
-//                                     children: [
-//                                       Text("'"),
-//                                       Text(
-//                                         user.userModel!.users!.events?[index].description ?? "no description",
-//                                       ),
-//                                       Text("'"),
-//                                     ],
-//                                   ),
-//                                 ),
-//                               ],
-//                             ),
-//                             Row(
-//                               children: [
-//                                 Expanded(
-//                                   child: Row(
-//                                     children: [
-//                                       const Text("Created At: "),
-//                                       Text(
-//                                         user.userModel!.users!.events?[index].eventDate ?? "no event date",
-//                                       ),
-//                                     ],
-//                                   ),
-//                                 ),
-//                                 Expanded(
-//                                   child: Row(
-//                                     children: [
-//                                       const Text("Start Time: "),
-//                                       Text(
-//                                         user.userModel!.users!.events?[index].eventTime ?? "noEventTime",
-//                                       ),
-//                                     ],
-//                                   ),
-//                                 ),
-//                               ],
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               );
-//             },
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-
-// List<Widget> _getChildren1() {
-//   List<EventData> events = kEvents
-//       .map(
-//         (e) => EventData.fromJson(e),
-//       )
-//       .toList();
-
-//   return events.map((e) => Event(data: e)).toList();
-// }
-
-// class EventData {
-//   int index;
-//   bool locked;
-//   final String category;
-//   final String name;
-//   final String description;
-//   final String eventDate;
-//   final String location;
-//   final String createdDate;
-
-//   EventData({
-//     this.index = 0,
-//     this.locked = false,
-//     required this.category,
-//     required this.name,
-//     required this.description,
-//     required this.eventDate,
-//     required this.location,
-//     required this.createdDate,
-//   });
-
-//   factory EventData.fromJson(Map<String, dynamic> json) => EventData(
-//         index: json['index'],
-//         category: json['category'],
-//         name: json['name'],
-//         description: json['description'],
-//         eventDate: json['eventDate'],
-//         location: json['location'],
-//         createdDate: json['createdDate'],
-//       );
-// }
-
-// const List<Map<String, dynamic>> kEvents = [
-//   {
-//     'index': 0,
-//     'category': 'Music',
-//     'name': 'Concert Day',
-//     'description': 'live fast die young',
-//     'eventDate': '19/03/2023',
-//     'location': 'İzmir',
-//     'createdDate': '06/03/2023',
-//   },
-//   {
-//     'index': 1,
-//     'category': 'Sport',
-//     'name': 'Tracking',
-//     'description': 'lets track!',
-//     'eventDate': '20/06/2023',
-//     'location': 'Muğla',
-//     'createdDate': '07/03/2023',
-//   },
-// ];

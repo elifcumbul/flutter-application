@@ -1,13 +1,16 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:take_me_out/models/user_model.dart';
 
-import '../models/events_model.dart';
-
-class EventsController extends GetxController {
+class FriendsController extends GetxController {
   var isLoading = false.obs;
-  EventsModel? eventsModel;
+  String token = '';
+  String userId = '';
+  UserModel? userModel;
+  //TextEditingController idController = TextEditingController();
 
 
   @override
@@ -16,25 +19,21 @@ class EventsController extends GetxController {
     fetchData();
   }
 
-
   fetchData() async {
-    String apiKey = 'https://localhost:7179/api/Events/getListEvent';
+    String apiKey = 'https://localhost:7179/api/Users/getById?UserId=$userId';
     try {
-      isLoading(true);
       http.Response response = await http.get(Uri.parse(
           apiKey));
       if (response.statusCode == 200) {
         ///data successfully
         var result = jsonDecode(response.body);
 
-        eventsModel = EventsModel.fromJson(result);
+        userModel = UserModel.fromJson(result);
       } else {
         print('error fetching data');
       }
     } catch (e) {
       print('Error while getting data is $e');
-    } finally {
-      isLoading(false);
-    }
+    } 
   }
 }

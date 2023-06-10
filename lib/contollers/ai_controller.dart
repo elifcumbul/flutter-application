@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:take_me_out/models/ai_model.dart';
+import 'package:take_me_out/models/all_users_model.dart';
 
-import '../models/events_model.dart';
 
-class EventsController extends GetxController {
-  var isLoading = false.obs;
-  EventsModel? eventsModel;
+class AiController extends GetxController {
+  AiModel? aiModel;
 
 
   @override
@@ -18,23 +18,19 @@ class EventsController extends GetxController {
 
 
   fetchData() async {
-    String apiKey = 'https://localhost:7179/api/Events/getListEvent';
     try {
-      isLoading(true);
       http.Response response = await http.get(Uri.parse(
-          apiKey));
+          'http://127.0.0.1:5000/'));
       if (response.statusCode == 200) {
         ///data successfully
         var result = jsonDecode(response.body);
 
-        eventsModel = EventsModel.fromJson(result);
+        aiModel = AiModel.fromJson(result);
       } else {
         print('error fetching data');
       }
     } catch (e) {
       print('Error while getting data is $e');
-    } finally {
-      isLoading(false);
-    }
+    } 
   }
 }

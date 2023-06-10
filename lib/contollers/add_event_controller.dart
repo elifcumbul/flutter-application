@@ -6,9 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:take_me_out/pages/homepage.dart';
-import 'package:take_me_out/tabs/home_page_tab.dart';
 
-import '../models/add_event_model.dart';
 
 class AddEventController extends GetxController {
   TextEditingController nameController = TextEditingController();
@@ -99,27 +97,3 @@ class AddEventController extends GetxController {
     }
   }
 }
-
-// class AddEventController extends GetxController {
-
-//     Future<void> addEvent(AddEventModel addEventModel) async {
-
-//     final url = Uri.parse('https://localhost:7179/api/Events/addEvent');
-//     final headers = {'Content-Type': 'application/json'};
-//     final body = json.encode(addEventModel.toJson());
-
-//     try {
-//       final response = await http.post(url, headers: headers, body: body);
-//       if (response.statusCode == 200) {
-//         // Event added successfully
-//         print('Event added successfully');
-//       } else {
-//         // Error occurred
-//         print('Failed to add event: ${response.statusCode}');
-//       }
-//     } catch (e) {
-//       // Exception occurred
-//       print('Failed to add event: $e');
-//     }
-//   }
-// }

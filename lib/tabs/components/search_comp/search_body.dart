@@ -1,6 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:take_me_out/contollers/ai_controller.dart';
+import 'package:take_me_out/contollers/all_users_controller.dart';
+import 'package:take_me_out/contollers/friends_controller.dart';
+import 'package:take_me_out/contollers/serp_api_controller.dart';
 import 'package:take_me_out/tabs/components/search_comp/search_background.dart';
 
 class SearchBody extends StatefulWidget {
@@ -13,19 +19,11 @@ class SearchBody extends StatefulWidget {
 class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
   late final TabController _tabController;
   final profileController = TextEditingController();
-
-  List images = [
-    "national_park1.png",
-    "national_park2.png",
-    "national_park3.png"
-  ];
-
-  var categories = {
-    "painting.png": "Art",
-    "sports.png": "Sport",
-    "theatre.png": "Stage",
-    "vinyl.png": "Music",
-  };
+  //AllUsersModel? allUsersModel;
+  AllUsersController allUsersController = Get.put(AllUsersController());
+  FriendsController friendsController = Get.put(FriendsController());
+  AiController aiController = Get.put(AiController());
+  SerpApiController serpApiController = Get.put(SerpApiController());
 
   @override
   void initState() {
@@ -41,14 +39,6 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Row(
-            //   children: [
-            //     Expanded(
-            //         child: Container(
-            //       height: 100,
-            //     )),
-            //   ],
-            // ),
             Container(
               padding: const EdgeInsets.only(top: 70.0, left: 20.0),
               child: Row(
@@ -63,7 +53,6 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                     height: 50.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey.withOpacity(0.5),
                     ),
                   ),
                 ],
@@ -80,18 +69,16 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
               ),
             ),
             const SizedBox(height: 20.0),
-            Container(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: TabBar(
-                  controller: _tabController,
-                  //isScrollable: true,
-                  //labelPadding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  tabs: const [
-                    Tab(text: "Events"),
-                    Tab(text: "Friends"),
-                  ],
-                ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TabBar(
+                controller: _tabController,
+                //isScrollable: true,
+                //labelPadding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                tabs: const [
+                  Tab(text: "Events"),
+                  Tab(text: "Friends"),
+                ],
               ),
             ),
             const SizedBox(height: 20.0),
@@ -107,20 +94,69 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                       Expanded(
                         flex: 10,
                         child: ListView.builder(
-                            itemCount: images.length,
+                            itemCount: serpApiController
+                                .serpModel!.eventsResults?.length,
                             scrollDirection: Axis.horizontal,
-                            itemBuilder: (_, index) {
+                            itemBuilder: (context, index) {
+                              Color itemColor = getItemColor(index);
                               return Container(
                                 margin: const EdgeInsets.only(
                                     left: 10.0, top: 10.0),
                                 height: 300,
                                 width: 200,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/" + images[index]),
-                                      fit: BoxFit.cover),
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 10.0, vertical: 10.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0, vertical: 10.0),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    color: itemColor,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      // Container(
+                                      //   margin: const EdgeInsets.only(
+                                      //       left: 10.0, top: 10.0),
+                                      //   height: 100.0,
+                                      //   width: 100.0,
+                                      //   child: Image.asset(
+                                      //       'assets/images/woman.png'),
+                                      // ),
+                                      // const SizedBox(
+                                      //   height: 20,
+                                      // ),
+                                      Text(
+                                        //Profil Photo
+                                        //username
+                                        ///aiController.aiModel!.recommendedUsers?[index].recommendedActivity ?? "rec", //Matched Activity
+                                        serpApiController.serpModel!
+                                                .eventsResults?[index].title ??
+                                            "username",
+                                        //"username",
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        serpApiController
+                                                .serpModel!
+                                                .eventsResults?[index]
+                                                .address?[0] ??
+                                            "username",
+                                      ),
+                                      Text(
+                                        serpApiController
+                                                .serpModel!
+                                                .eventsResults?[index]
+                                                .date
+                                                ?.startDate ??
+                                            "",
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }),
@@ -134,16 +170,9 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
                             Text(
-                              "Explore More",
+                              "Suggestions",
                               style: TextStyle(
                                 fontSize: 22.0,
-                              ),
-                            ),
-                            Text(
-                              "See all",
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: Colors.grey,
                               ),
                             ),
                           ],
@@ -156,35 +185,64 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                         margin: const EdgeInsets.only(left: 20.0),
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: categories.length,
-                            itemBuilder: (_, index) {
+                            itemCount:
+                                aiController.aiModel!.recommendedUsers?.length,
+                            itemBuilder: (context, index) {
                               return Container(
-                                margin: const EdgeInsets.only(right: 27.0),
+                                width: 200.0,
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5.0, vertical: 2.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  color: Color.fromARGB(59, 193, 187, 239),
+                                ),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(
-                                          right: 7.0, left: 7.0),
-                                      height: 60,
-                                      width: 60,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Colors.white,
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/categories/" +
-                                                  categories.keys
-                                                      .elementAt(index)),
-                                          fit: BoxFit.cover,
+                                    Row(
+                                      children: [
+                                        Container(
+                                          margin:
+                                              const EdgeInsets.only(left:5.0, top: 5.0),
+                                          height: 50.0,
+                                          width: 50.0,
+                                          child: Image.asset(
+                                              'assets/images/woman.png'),
                                         ),
-                                      ),
+                                        Container(
+                                          margin:
+                                              const EdgeInsets.only(left:10.0, top: 5.0),
+                                          child: Text(
+                                            aiController
+                                                    .aiModel!
+                                                    .recommendedUsers?[index]
+                                                    .user ??
+                                                "rec", //Matched Activity
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5.0,
                                     ),
                                     Container(
-                                      child: Text(
-                                        categories.values.elementAt(index),
-                                        style: const TextStyle(
-                                          color: Colors.grey,
-                                        ),
+                                      margin:
+                                              const EdgeInsets.only(left:8.0, top: 5.0),
+                                      child: Row(
+                                        children: [
+                                          const Text(
+                                            "Matched Events: ",
+                                          ),
+                                          Text(
+                                            aiController
+                                                    .aiModel!
+                                                    .recommendedUsers?[index]
+                                                    .recommendedActivity ??
+                                                "rec",
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -194,26 +252,10 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
-                  // ListView.builder(
-                  //     itemCount: images.length,
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemBuilder: (_, index) {
-                  //       return Container(
-                  //         margin: const EdgeInsets.only(left: 10.0, top: 10.0),
-                  //         height: 300,
-                  //         width: 200,
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20),
-                  //           image: DecorationImage(
-                  //             image: AssetImage("assets/img/" + images[index]),
-                  //             fit: BoxFit.cover,
-                  //           ),
-                  //         ),
-                  //       );
-                  //     })
                   Container(
+                    //color: Colors.amber,
                     margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-                    height: size.height * 0.6,
+                    height: 500,
                     width: double.maxFinite,
                     child: Column(
                       children: [
@@ -230,14 +272,14 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                                 Icons.person_search_outlined,
                                 color: Color(0xff0E112B),
                               ),
-                              onPressed: () => profileController.clear(),
+                              onPressed: () {},
                             ),
-                            // enabledBorder: OutlineInputBorder(
-                            //     borderRadius: BorderRadius.circular(10),
-                            //     borderSide: const BorderSide(
-                            //       color: Color(0xffE4AE58),
-                            //     ),
-                            // ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color(0xffE4AE58),
+                              ),
+                            ),
                             border: const UnderlineInputBorder(),
                             labelText: "Search",
                             labelStyle: const TextStyle(
@@ -245,7 +287,79 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
                               letterSpacing: 2.0,
                               color: Color(0xff0E112B),
                             ),
-                            
+                          ),
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount:
+                                allUsersController.allUsersModel?.users?.length,
+                            itemBuilder: (context, index) {
+                              friendsController.userId = allUsersController
+                                      .allUsersModel?.users?[index].id ??
+                                  "s";
+                              return Container(
+                                width: size.width,
+                                //color: Color.fromARGB(235, 236, 237, 228),
+                                margin: const EdgeInsets.only(bottom: 20.0),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 10.0, top: 10.0),
+                                          height: 20.0,
+                                          width: 20.0,
+                                          child: Image.asset(
+                                              'assets/images/woman.png'),
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 10.0, top: 10.0),
+                                          child: Text(
+                                            style: const TextStyle(
+                                              fontSize: 20.0,
+                                            ),
+                                            allUsersController.allUsersModel
+                                                    ?.users?[index].name ??
+                                                "e",
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 2.0, top: 10.0),
+                                          child: Text(
+                                            style: const TextStyle(
+                                              fontSize: 20.0,
+                                            ),
+                                            allUsersController.allUsersModel
+                                                    ?.users?[index].surname ??
+                                                "e",
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          margin:
+                                              const EdgeInsets.only(left: 40.0),
+                                          child: Text(
+                                            allUsersController.allUsersModel
+                                                    ?.users?[index].userName ??
+                                                "e",
+                                          ),
+                                        ),
+                                        const Text(" - following "),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],
@@ -259,4 +373,23 @@ class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
       ),
     );
   }
+}
+
+Color getItemColor(int index) {
+  // List of colors to choose from
+  List<Color> colors = [
+    Color(0xff95d785),
+    Color(0xffbdc2ff),
+    Color(0xfffdba4a),
+    Color(0xffbfe9ff),
+    Colors.orange,
+    Colors.blue,
+    Colors.yellow,
+    Colors.purple,
+  ];
+
+  // Calculate the index of the color based on the list length
+  int colorIndex = index % colors.length;
+
+  return colors[colorIndex];
 }

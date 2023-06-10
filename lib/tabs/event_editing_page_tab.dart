@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:take_me_out/pages/components/input_field.dart';
 import 'package:take_me_out/pages/homepage.dart';
 import 'package:take_me_out/tabs/components/event_comp/event_editing_background.dart';
+import 'package:take_me_out/tabs/components/profile_comp/profile_body.dart';
 
 import '../contollers/add_event_controller.dart';
 
@@ -141,19 +142,10 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 child: Row(
                 children: [
                   Expanded(
-                  //   child: DropDownTextField(
-                  //     controller: addEventController.categoryIdController,
-                  //     dropDownItemCount: 4,
-                  //     dropDownList: const [
-                  //       DropDownValueModel(name: 'Art', value: "050a0e67-560b-4095-e037-08db65163e3c"),
-                  //       DropDownValueModel(name: 'Sport', value: "4623a530-197d-4dc4-e039-08db65163e3c"),
-                  //       DropDownValueModel(name: 'Music', value: "1a864f26-2c56-475a-e038-08db65163e3c"),
-                  //       DropDownValueModel(name: 'Theatre', value: "cfd679d9-270b-443f-e03a-08db65163e3c"),
-                  //     ],
-                  //   ),
                     child: DropdownButton(
                       iconEnabledColor: Color(0xff805600),
                       isExpanded: true,
+                      borderRadius: BorderRadius.circular(20),
                       hint: Text("Art"),
                       items: const [
                         DropdownMenuItem(child: Text("Art"), value: "050a0e67-560b-4095-e037-08db65163e3c"),
@@ -192,8 +184,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
                         backgroundColor: MaterialStateProperty.all(
                             const Color.fromARGB(255, 14, 17, 43)),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         addEventController.addEvent();
+                        await Get.to(()=> HomePage());
                       },
                       child: const Text(
                         "Add Event",

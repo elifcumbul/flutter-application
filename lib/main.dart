@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    main();
     const tmoTheme = TmoTheme();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
