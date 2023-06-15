@@ -112,12 +112,11 @@ class _TimelineState extends State<Timeline> {
                   Expanded(
                       child: ListView.builder(
                           itemCount: eventsController
-                              .eventsModel!.events?.length, //events.length size
+                              .eventsModel?.events?.length, //events.length size
                           itemBuilder: (context, index) {
-                            //fetchData(eventsController.eventsModel!.events?[index].creatorId);
                             Color itemColor = getItemColor(index);
                             if (eventsController
-                                    .eventsModel!.events?[index].eventDate ==
+                                    .eventsModel?.events?[index].eventDate ==
                                 DateFormat.yMd()
                                     .format(_selectedDate)
                                     .toString()) {
@@ -156,11 +155,12 @@ class _TimelineState extends State<Timeline> {
                                                       children: [
                                                         Text(
                                                           //userController.userModel!.users?.userName ?? "name",
-                                                          allUsersController
-                                                                  .allUsersModel!
-                                                                  .users?[index]
-                                                                  .userName ??
-                                                              "name",
+                                                          // allUsersController
+                                                          //         .allUsersModel!
+                                                          //         .users?[index]
+                                                          //         .userName ??
+                                                          //     "name",
+                                                          eventsController.eventsModel?.events?[index].creator?.userName ?? "name",
                                                           style:
                                                               GoogleFonts.lato(
                                                             textStyle:
@@ -192,12 +192,8 @@ class _TimelineState extends State<Timeline> {
                                                             const SizedBox(
                                                                 width: 4),
                                                             Text(
-                                                              eventsController
-                                                                      .eventsModel!
-                                                                      .events?[
-                                                                          index]
-                                                                      .eventTime ??
-                                                                  "time",
+                                                              eventsController.eventsModel?.events?[index].eventTime ?? "time",
+                                                              //allUsersController.allUsersModel?.users?[index].events?[index].eventTime ?? "",
                                                               style: GoogleFonts
                                                                   .lato(
                                                                 textStyle: TextStyle(
@@ -232,12 +228,7 @@ class _TimelineState extends State<Timeline> {
                                                         const SizedBox(
                                                             height: 12),
                                                         Text(
-                                                          eventsController
-                                                                  .eventsModel!
-                                                                  .events?[
-                                                                      index]
-                                                                  .description ??
-                                                              "description",
+                                                          eventsController.eventsModel?.events?[index].description ?? "description",
                                                           style:
                                                               GoogleFonts.lato(
                                                             textStyle: TextStyle(
@@ -261,11 +252,7 @@ class _TimelineState extends State<Timeline> {
                                                   RotatedBox(
                                                     quarterTurns: 3,
                                                     child: Text(
-                                                      eventsController
-                                                              .eventsModel!
-                                                              .events?[index]
-                                                              .name ??
-                                                          "name",
+                                                      eventsController.eventsModel?.events?[index].name ?? "name",
                                                       style: GoogleFonts.lato(
                                                         textStyle:
                                                             const TextStyle(

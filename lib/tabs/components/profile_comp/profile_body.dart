@@ -8,7 +8,10 @@ import 'package:take_me_out/contollers/add_photo_controller.dart';
 import 'package:take_me_out/contollers/user_controller.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:take_me_out/pages/components/friends_comp/friends_body.dart';
+import 'package:take_me_out/pages/friends_page.dart';
 import 'package:take_me_out/tabs/components/profile_comp/profile_background.dart';
+import 'package:take_me_out/tabs/home_page_tab.dart';
 
 class ProfileBody extends StatefulWidget {
   const ProfileBody({Key? key}) : super(key: key);
@@ -177,25 +180,20 @@ class _ProfileBodyState extends State<ProfileBody> {
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 6.0, left: 125.0),
-                      height: 80.0,
-                      child: const Text(
-                        '6 followers',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 5.0, right: 125.0),
-                      height: 80.0,
-                      child: const Text(
-                        '6 following',
-                        style: TextStyle(
-                          fontSize: 15.0,
+                      margin: const EdgeInsets.only(top: 6.0),
+                      height: 60.0,
+                      child: TextButton(
+                        onPressed: () {
+                          Get.to(() => FriendsBody());
+                        },
+                        child: const Text(
+                          'friends',
+                          style: TextStyle(
+                            fontSize: 15.0,
+                          ),
                         ),
                       ),
                     ),

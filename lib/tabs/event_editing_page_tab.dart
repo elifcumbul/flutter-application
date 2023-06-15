@@ -6,6 +6,7 @@ import 'package:take_me_out/pages/components/input_field.dart';
 import 'package:take_me_out/pages/homepage.dart';
 import 'package:take_me_out/tabs/components/event_comp/event_editing_background.dart';
 import 'package:take_me_out/tabs/components/profile_comp/profile_body.dart';
+import 'package:take_me_out/tabs/home_page_tab.dart';
 
 import '../contollers/add_event_controller.dart';
 
@@ -64,14 +65,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: const EdgeInsets.only(left: 20.0),
-                child: GestureDetector(
-                  onTap: () => Get.to(const HomePage()),
-                  child: const Icon(Icons.arrow_back_ios),
-                ),
-              ),
-              const SizedBox(height: 20.0),
+              
+              const SizedBox(height: 44.0),
               Container(
                 margin: const EdgeInsets.only(left: 20.0),
                 child: const Text(
@@ -184,9 +179,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
                         backgroundColor: MaterialStateProperty.all(
                             const Color.fromARGB(255, 14, 17, 43)),
                       ),
-                      onPressed: () async {
+                      onPressed: () {
                         addEventController.addEvent();
-                        await Get.to(()=> HomePage());
+                        Get.to(()=> HomePageTab());
                       },
                       child: const Text(
                         "Add Event",

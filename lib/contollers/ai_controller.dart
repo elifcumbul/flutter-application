@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:take_me_out/models/ai_model.dart';
-import 'package:take_me_out/models/all_users_model.dart';
 
 
 class AiController extends GetxController {

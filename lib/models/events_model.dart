@@ -29,7 +29,7 @@ class Events {
   String? categoryId;
   String? categories;
   String? creatorId;
-  String? creator;
+  Creator? creator;
   String? participants;
   String? id;
   String? createdDate;
@@ -55,7 +55,8 @@ class Events {
     categoryId = json['categoryId'];
     categories = json['categories'];
     creatorId = json['creatorId'];
-    creator = json['creator'];
+    creator =
+        json['creator'] != null ? new Creator.fromJson(json['creator']) : null;
     participants = json['participants'];
     id = json['id'];
     createdDate = json['createdDate'];
@@ -70,10 +71,49 @@ class Events {
     data['categoryId'] = categoryId;
     data['categories'] = categories;
     data['creatorId'] = creatorId;
-    data['creator'] = creator;
+    if (creator != null) {
+      data['creator'] = creator!.toJson();
+    }
     data['participants'] = participants;
     data['id'] = id;
     data['createdDate'] = createdDate;
+    return data;
+  }
+}
+
+class Creator {
+  String? name;
+  String? surname;
+  String? photoUrl;
+  String? id;
+  String? userName;
+  String? email;
+
+  Creator(
+      {this.name,
+      this.surname,
+      this.photoUrl,
+      this.id,
+      this.userName,
+      this.email});
+
+  Creator.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    surname = json['surname'];
+    photoUrl = json['photoUrl'];
+    id = json['id'];
+    userName = json['userName'];
+    email = json['email'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = name;
+    data['surname'] = surname;
+    data['photoUrl'] = photoUrl;
+    data['id'] = id;
+    data['userName'] = userName;
+    data['email'] = email;
     return data;
   }
 }

@@ -15,8 +15,7 @@ class SerpApiController extends GetxController {
 
   fetchData() async {
     try {
-      http.Response response = await http.get(Uri.parse(
-          'key'));
+      http.Response response = await http.get(Uri.parse(ApiKey));
 
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);
@@ -29,24 +28,3 @@ class SerpApiController extends GetxController {
     }
   }
 }
-
-// import 'package:http/http.dart' as http;
-
-// void main() async {
-//   final params = {
-//     'engine': 'google_events',
-//     'q': 'Events in Austin',
-//     'hl': 'en',
-//     'gl': 'us',
-//     'api_key': 'cafd7ffffe328924d0f90c15e6ac9f5b11a5f99b3d34e1b9fffae9ee951d08cb',
-//   };
-
-//   final url = Uri.parse('https://serpapi.com/search')
-//       .replace(queryParameters: params);
-
-//   final res = await http.get(url);
-//   final status = res.statusCode;
-//   if (status != 200) throw Exception('http.get error: statusCode= $status');
-
-//   print(res.body);
-// }

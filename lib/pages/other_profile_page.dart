@@ -1,12 +1,14 @@
-// import 'package:flutter/material.dart';
-// import 'package:take_me_out/pages/components/other_profile_body.dart';
+import 'package:flutter/material.dart';
 
-// class OtherProfilePage extends StatelessWidget {
-//   const OtherProfilePage(String? id, {super.key});
+import 'components/other_profile_comp/other_profile_body.dart';
+
+class OtherProfilePage extends StatelessWidget {
+  final String profileKey;
+  const OtherProfilePage({required this.profileKey});
 
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return OtherProfileBody();
-//   }
-// // }
+  @override
+  Widget build(BuildContext context) {
+    return OtherProfileBody(profileKey: profileKey,);
+  }
+ }
